@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/PageHero";
+import TVEmbed from "@/components/TVEmbed";
 
 export const Route = createFileRoute("/charts")({
   head: () => ({
@@ -51,37 +52,31 @@ function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
     .join(" ");
 
   return (
-    <div className="relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.16),transparent_55%),linear-gradient(135deg,#050d24,#08143a)] p-4">
-      <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.25em] text-white/60">
-        <span>{symbol}</span>
-        <span>{interval}</span>
+    <TVEmbed symbol={symbol} interval={interval} className="h-[420px] w-full">
+      <div className="relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-[#071227] to-[#08143a] p-4">
+        <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-wide text-white/60">
+          <span>{symbol}</span>
+          <span>{interval}</span>
+        </div>
+        <svg viewBox={`0 0 ${width} ${height}`} className="h-[280px] w-full">
+          <rect x="0" y="0" width={width} height={height} rx="16" fill="rgba(255,255,255,0.03)" />
+          {[0, 1, 2, 3].map((line) => (
+            <line key={line} x1={0} y1={20 + line * 35} x2={width} y2={20 + line * 35} stroke="rgba(255,255,255,0.06)" strokeDasharray="4 4" />
+          ))}
+          <path d={path} fill="none" stroke="#00d4ff" strokeWidth={3} strokeLinecap="round" />
+          <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#gradient)" opacity={0.16} />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#00d4ff" />
+              <stop offset="100%" stopColor="#071227" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div className="mt-4 rounded-lg border border-neon-blue/20 bg-neon-blue/10 px-3 py-2 text-sm text-neon-blue">
+          Market data is currently unavailable. This preview is a local chart placeholder until live connectivity is restored.
+        </div>
       </div>
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-[280px] w-full">
-        <rect x="0" y="0" width={width} height={height} rx="16" fill="rgba(255,255,255,0.03)" />
-        {[0, 1, 2, 3].map((line) => (
-          <line
-            key={line}
-            x1="0"
-            y1={20 + line * 35}
-            x2={width}
-            y2={20 + line * 35}
-            stroke="rgba(255,255,255,0.08)"
-            strokeDasharray="4 4"
-          />
-        ))}
-        <path d={path} fill="none" stroke="#00d4ff" strokeWidth="3" strokeLinecap="round" />
-        <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#gradient)" opacity="0.18" />
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#00d4ff" />
-            <stop offset="100%" stopColor="#0f172a" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <div className="mt-4 rounded-lg border border-neon-blue/20 bg-neon-blue/10 px-3 py-2 text-sm text-neon-blue">
-        Market data is currently unavailable. This preview is a local chart placeholder until live connectivity is restored.
-      </div>
-    </div>
+    </TVEmbed>
   );
 }
 
@@ -95,16 +90,13 @@ function ChartsPage() {
         title="Live Charts"
         subtitle="Real-time TradingView charts across metals, crypto and major FX pairs."
       />
+
       <section className="relative px-5 pb-28 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur">
             <div>
-              <p className="font-sub text-xs uppercase tracking-[0.25em] text-neon-blue">
-                Interval
-              </p>
-              <p className="font-display text-sm text-white/70">
-                Apply timeframe to all charts
-              </p>
+              <p className="font-sub text-xs uppercase tracking-[0.25em] text-neon-blue">Interval</p>
+              <p className="font-display text-sm text-white/70">Apply timeframe to all charts</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {INTERVALS.map((i) => {
@@ -128,17 +120,10 @@ function ChartsPage() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {CHARTS.map((c) => (
-              <div
-                key={c.symbol}
-                className="glass overflow-hidden rounded-2xl border border-white/10 p-4 hover-lift"
-              >
+              <div key={c.symbol} className="glass overflow-hidden rounded-2xl border border-white/10 p-4 hover-lift">
                 <div className="mb-3 flex items-center justify-between">
-                  <h3 className="font-display text-base font-bold tracking-wider text-white">
-                    {c.title}
-                  </h3>
-                  <span className="font-sub text-xs uppercase tracking-[0.2em] text-neon-green">
-                    ● Live
-                  </span>
+                  <h3 className="font-display text-base font-bold tracking-wider text-white">{c.title}</h3>
+                  <span className="font-sub text-xs uppercase tracking-[0.2em] text-neon-green">● Live</span>
                 </div>
                 <TVChart symbol={c.symbol} interval={interval} />
               </div>
