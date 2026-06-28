@@ -140,7 +140,7 @@ function Hero() {
               1.0<span className="text-gradient">9248</span>
             </div>
             <div className="relative h-44 overflow-hidden rounded-xl bg-black/40">
-              <CandlestickBg opacity={0.7} />
+              <TVMiniEURUSD />
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 font-sub text-[11px]">
               {[["High", "1.0962", "text-neon-green"], ["Low", "1.0902", "text-destructive"], ["Vol", "2.4M", "text-neon-blue"]].map(([k, v, c]) => (
