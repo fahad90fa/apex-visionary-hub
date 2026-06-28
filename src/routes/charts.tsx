@@ -36,6 +36,7 @@ const INTERVALS = [
 ];
 
 function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
+<<<<<<< HEAD
   const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,6 +86,55 @@ function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
   }, [symbol, interval]);
 
   return <div ref={hostRef} className="h-[420px] w-full" />;
+=======
+  const points = [18, 32, 24, 42, 37, 58, 55, 63, 60, 72, 68, 86];
+  const width = 320;
+  const height = 180;
+  const max = Math.max(...points);
+  const min = Math.min(...points);
+  const stepX = width / (points.length - 1);
+  const path = points
+    .map((point, index) => {
+      const x = index * stepX;
+      const y = height - ((point - min) / (max - min || 1)) * (height - 20) - 10;
+      return `${index === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
+
+  return (
+    <div className="relative h-[420px] w-full overflow-hidden rounded-xl border border-white/10 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.16),transparent_55%),linear-gradient(135deg,#050d24,#08143a)] p-4">
+      <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.25em] text-white/60">
+        <span>{symbol}</span>
+        <span>{interval}</span>
+      </div>
+      <svg viewBox={`0 0 ${width} ${height}`} className="h-[280px] w-full">
+        <rect x="0" y="0" width={width} height={height} rx="16" fill="rgba(255,255,255,0.03)" />
+        {[0, 1, 2, 3].map((line) => (
+          <line
+            key={line}
+            x1="0"
+            y1={20 + line * 35}
+            x2={width}
+            y2={20 + line * 35}
+            stroke="rgba(255,255,255,0.08)"
+            strokeDasharray="4 4"
+          />
+        ))}
+        <path d={path} fill="none" stroke="#00d4ff" strokeWidth="3" strokeLinecap="round" />
+        <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#gradient)" opacity="0.18" />
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#00d4ff" />
+            <stop offset="100%" stopColor="#0f172a" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className="mt-4 rounded-lg border border-neon-blue/20 bg-neon-blue/10 px-3 py-2 text-sm text-neon-blue">
+        Live market view is temporarily unavailable. The chart preview is rendered locally while TradingView connectivity is restored.
+      </div>
+    </div>
+  );
+>>>>>>> 92e224a (udapte)
 }
 
 function ChartsPage() {

@@ -3,6 +3,8 @@ import { Linkedin, Twitter, Send } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "./index";
 import { CandlestickBg } from "../components/CandlestickBg";
+import adilPic from "../pics/adil.jpeg";
+import azeemPic from "../pics/azeem.jpeg";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -17,10 +19,9 @@ export const Route = createFileRoute("/team")({
 });
 
 const team = [
-  { name: "Damien Cross", role: "Head Trader", color: "var(--neon-blue)", bio: "15+ years trading FX and indices at major institutional desks across London and Singapore.", years: "15+ yrs", tags: ["FX Majors", "Order Flow", "Macro"] },
-  { name: "Sofia Renaud", role: "Technical Analyst", color: "var(--neon-green)", bio: "Specialist in market structure, Elliott Wave and Fibonacci confluence across timeframes.", years: "12 yrs", tags: ["Price Action", "Wyckoff", "SMC"] },
-  { name: "Rohan Mehta", role: "Risk Manager", color: "var(--neon-purple)", bio: "Former hedge fund risk officer. Builds the academy's capital-preservation playbooks.", years: "10 yrs", tags: ["Position Sizing", "Drawdown", "Hedging"] },
-  { name: "Leila Hassan", role: "Lead Mentor", color: "var(--gold)", bio: "Trading psychologist and performance coach. Guides students through the mental game.", years: "8 yrs", tags: ["Psychology", "Discipline", "Coaching"] },
+  { name: "Adil tanveer", role: "Head Trader", color: "var(--neon-blue)", bio: "15+ years trading FX and indices at major institutional desks across London and Singapore.", years: "15+ yrs", tags: ["FX Majors", "Order Flow", "Macro"], image: adilPic },
+  { name: "MUHAMMAD AZEEM ", role: "Technical Analyst", color: "var(--neon-green)", bio: "Specialist in market structure, Elliott Wave and Fibonacci confluence across timeframes.", years: "12 yrs", tags: ["Price Action", "Wyckoff", "SMC"], image: azeemPic },
+  { name: "Hassan bilal", role: "Risk Manager", color: "var(--neon-purple)", bio: "Former hedge fund risk officer. Builds the academy's capital-preservation playbooks.", years: "10 yrs", tags: ["Position Sizing", "Drawdown", "Hedging"] },
 ];
 
 function TeamPage() {
@@ -78,11 +79,17 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
           <div className="relative flex h-full flex-col items-center justify-center text-center">
             <div className="relative">
               <div className="absolute inset-0 -m-2 animate-spin-slow rounded-full border border-dashed" style={{ borderColor: `${member.color}66` }} />
-              <div
-                className="grid h-32 w-32 place-items-center rounded-full border-2 font-display text-3xl font-black text-white"
-                style={{ borderColor: member.color, background: `linear-gradient(135deg, ${member.color}33, transparent)`, boxShadow: `0 0 30px ${member.color}66` }}
-              >
-                {member.name.split(" ").map(n => n[0]).join("")}
+              <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-white/10 shadow-lg" style={{ boxShadow: `0 0 30px ${member.color}66`, backgroundColor: '#000' }}>
+                {member.image ? (
+                  <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
+                ) : (
+                  <div
+                    className="grid h-full w-full place-items-center font-display text-3xl font-black text-white"
+                    style={{ background: `linear-gradient(135deg, ${member.color}33, transparent)` }}
+                  >
+                    {member.name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                )}
               </div>
             </div>
             <h3 className="mt-6 font-display text-2xl font-bold text-white">{member.name}</h3>
