@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/charts")({
@@ -14,70 +14,82 @@ export const Route = createFileRoute("/charts")({
   component: ChartsPage,
 });
 
-type ChartDef = { title: string; symbol: string; id: string };
+type ChartDef = { title: string; symbol: string };
 
 const CHARTS: ChartDef[] = [
-  { title: "XAU/USD — Gold", symbol: "OANDA:XAUUSD", id: "tv_xauusd" },
-  { title: "BTC/USD — Bitcoin", symbol: "BINANCE:BTCUSDT", id: "tv_btcusd" },
-  { title: "ETH/USD — Ethereum", symbol: "BINANCE:ETHUSDT", id: "tv_ethusd" },
-  { title: "EUR/USD — Forex", symbol: "FX:EURUSD", id: "tv_eurusd" },
-  { title: "GBP/USD — Forex", symbol: "FX:GBPUSD", id: "tv_gbpusd" },
+  { title: "XAU/USD — Gold", symbol: "OANDA:XAUUSD" },
+  { title: "BTC/USD — Bitcoin", symbol: "BINANCE:BTCUSDT" },
+  { title: "ETH/USD — Ethereum", symbol: "BINANCE:ETHUSDT" },
+  { title: "EUR/USD — Forex", symbol: "FX:EURUSD" },
+  { title: "GBP/USD — Forex", symbol: "FX:GBPUSD" },
 ];
 
-declare global {
-  interface Window {
-    TradingView?: { widget: new (cfg: Record<string, unknown>) => unknown };
-  }
-}
+const INTERVALS = [
+  { label: "1m", value: "1" },
+  { label: "5m", value: "5" },
+  { label: "15m", value: "15" },
+  { label: "30m", value: "30" },
+  { label: "1H", value: "60" },
+  { label: "4H", value: "240" },
+  { label: "1D", value: "D" },
+  { label: "1W", value: "W" },
+];
 
-function TVChart({ symbol, containerId }: { symbol: string; containerId: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
+  const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let cancelled = false;
-    const render = () => {
-      if (cancelled || !window.TradingView || !ref.current) return;
-      ref.current.innerHTML = "";
-      new window.TradingView.widget({
-        container_id: containerId,
-        symbol,
-        interval: "1",
-        theme: "dark",
-        width: "100%",
-        height: 400,
-        timezone: "Etc/UTC",
-        style: "1",
-        locale: "en",
-        toolbar_bg: "#0a1530",
-        enable_publishing: false,
-        hide_top_toolbar: false,
-        hide_legend: false,
-        allow_symbol_change: true,
-        save_image: false,
-      });
+    const host = hostRef.current;
+    if (!host) return;
+    host.innerHTML = "";
+
+    const container = document.createElement("div");
+    container.className = "tradingview-widget-container";
+    container.style.height = "100%";
+    container.style.width = "100%";
+
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    widgetDiv.style.width = "100%";
+    container.appendChild(widgetDiv);
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      autosize: true,
+      symbol,
+      interval,
+      timezone: "Etc/UTC",
+      theme: "dark",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#0a1530",
+      enable_publishing: false,
+      hide_top_toolbar: false,
+      hide_legend: false,
+      allow_symbol_change: true,
+      save_image: false,
+      backgroundColor: "rgba(5, 13, 36, 1)",
+      gridColor: "rgba(0, 212, 255, 0.06)",
+      support_host: "https://www.tradingview.com",
+    });
+    container.appendChild(script);
+    host.appendChild(container);
+
+    return () => {
+      host.innerHTML = "";
     };
+  }, [symbol, interval]);
 
-    if (window.TradingView) {
-      render();
-    } else {
-      const existing = document.querySelector<HTMLScriptElement>('script[src="https://s3.tradingview.com/tv.js"]');
-      if (existing) {
-        existing.addEventListener("load", render, { once: true });
-      } else {
-        const s = document.createElement("script");
-        s.src = "https://s3.tradingview.com/tv.js";
-        s.async = true;
-        s.onload = render;
-        document.head.appendChild(s);
-      }
-    }
-    return () => { cancelled = true; };
-  }, [symbol, containerId]);
-
-  return <div id={containerId} ref={ref} className="h-[400px] w-full" />;
+  return <div ref={hostRef} className="h-[420px] w-full" />;
 }
 
 function ChartsPage() {
+  const [interval, setInterval] = useState("1");
+
   return (
     <>
       <PageHero
@@ -86,23 +98,54 @@ function ChartsPage() {
         subtitle="Real-time TradingView charts across metals, crypto and major FX pairs."
       />
       <section className="relative px-5 pb-28 lg:px-8">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2">
-          {CHARTS.map((c) => (
-            <div
-              key={c.id}
-              className="glass overflow-hidden rounded-2xl border border-white/10 p-4 hover-lift"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="font-display text-base font-bold tracking-wider text-white">
-                  {c.title}
-                </h3>
-                <span className="font-sub text-xs uppercase tracking-[0.2em] text-neon-green">
-                  ● Live
-                </span>
-              </div>
-              <TVChart symbol={c.symbol} containerId={c.id} />
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur">
+            <div>
+              <p className="font-sub text-xs uppercase tracking-[0.25em] text-neon-blue">
+                Interval
+              </p>
+              <p className="font-display text-sm text-white/70">
+                Apply timeframe to all charts
+              </p>
             </div>
-          ))}
+            <div className="flex flex-wrap gap-2">
+              {INTERVALS.map((i) => {
+                const active = i.value === interval;
+                return (
+                  <button
+                    key={i.value}
+                    onClick={() => setInterval(i.value)}
+                    className={`rounded-lg border px-3 py-1.5 font-sub text-xs font-bold uppercase tracking-wider transition-all ${
+                      active
+                        ? "border-neon-blue bg-neon-blue/15 text-neon-blue shadow-[0_0_18px_rgba(0,212,255,0.45)]"
+                        : "border-white/10 bg-white/5 text-white/70 hover:border-neon-blue/40 hover:text-white"
+                    }`}
+                  >
+                    {i.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {CHARTS.map((c) => (
+              <div
+                key={c.symbol}
+                className="glass overflow-hidden rounded-2xl border border-white/10 p-4 hover-lift"
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <h3 className="font-display text-base font-bold tracking-wider text-white">
+                    {c.title}
+                  </h3>
+                  <span className="font-sub text-xs uppercase tracking-[0.2em] text-neon-green">
+                    ● Live
+                  </span>
+                </div>
+                <TVChart symbol={c.symbol} interval={interval} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
