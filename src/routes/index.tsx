@@ -5,6 +5,44 @@ import { ArrowRight, ChevronDown, Play, Shield, Globe, Cpu, LineChart, Quote, St
 import { ParticleField } from "../components/ParticleField";
 import { CandlestickBg } from "../components/CandlestickBg";
 
+function TVMiniEURUSD() {
+  const hostRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host) return;
+    host.innerHTML = "";
+    const container = document.createElement("div");
+    container.className = "tradingview-widget-container";
+    container.style.height = "100%";
+    container.style.width = "100%";
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    widgetDiv.style.width = "100%";
+    container.appendChild(widgetDiv);
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol: "FX:EURUSD",
+      width: "100%",
+      height: "100%",
+      locale: "en",
+      dateRange: "1D",
+      colorTheme: "dark",
+      isTransparent: true,
+      autosize: true,
+      chartOnly: false,
+      noTimeScale: false,
+    });
+    container.appendChild(script);
+    host.appendChild(container);
+    return () => { host.innerHTML = ""; };
+  }, []);
+  return <div ref={hostRef} className="h-full w-full" />;
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
