@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as SocialRouteImport } from './routes/social'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as LocationRouteImport } from './routes/location'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -30,6 +31,11 @@ const TeamRoute = TeamRouteImport.update({
 const SocialRoute = SocialRouteImport.update({
   id: '/social',
   path: '/social',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationRoute = LocationRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
+  '/news': typeof NewsRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
+  '/news': typeof NewsRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
+  '/news': typeof NewsRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/location'
+    | '/news'
     | '/social'
     | '/team'
     | '/vision'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/location'
+    | '/news'
     | '/social'
     | '/team'
     | '/vision'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/location'
+    | '/news'
     | '/social'
     | '/team'
     | '/vision'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FacilitiesRoute: typeof FacilitiesRoute
   LocationRoute: typeof LocationRoute
+  NewsRoute: typeof NewsRoute
   SocialRoute: typeof SocialRoute
   TeamRoute: typeof TeamRoute
   VisionRoute: typeof VisionRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/social'
       fullPath: '/social'
       preLoaderRoute: typeof SocialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/location': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FacilitiesRoute: FacilitiesRoute,
   LocationRoute: LocationRoute,
+  NewsRoute: NewsRoute,
   SocialRoute: SocialRoute,
   TeamRoute: TeamRoute,
   VisionRoute: VisionRoute,
@@ -187,13 +208,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
