@@ -79,7 +79,7 @@ function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
         </defs>
       </svg>
       <div className="mt-4 rounded-lg border border-neon-blue/20 bg-neon-blue/10 px-3 py-2 text-sm text-neon-blue">
-        Live market view is temporarily unavailable. The chart preview is rendered locally while TradingView connectivity is restored.
+        Market data is currently unavailable. This preview is a local chart placeholder until live connectivity is restored.
       </div>
     </div>
   );
