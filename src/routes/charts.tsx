@@ -81,7 +81,7 @@ function ChartsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Markets"
+        badge="Markets"
         title="Live Charts"
         subtitle="Real-time TradingView charts across metals, crypto and major FX pairs."
       />
