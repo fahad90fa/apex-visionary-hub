@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/charts")({
@@ -36,57 +36,6 @@ const INTERVALS = [
 ];
 
 function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
-<<<<<<< HEAD
-  const hostRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const host = hostRef.current;
-    if (!host) return;
-    host.innerHTML = "";
-
-    const container = document.createElement("div");
-    container.className = "tradingview-widget-container";
-    container.style.height = "100%";
-    container.style.width = "100%";
-
-    const widgetDiv = document.createElement("div");
-    widgetDiv.className = "tradingview-widget-container__widget";
-    widgetDiv.style.height = "100%";
-    widgetDiv.style.width = "100%";
-    container.appendChild(widgetDiv);
-
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-      autosize: true,
-      symbol,
-      interval,
-      timezone: "Etc/UTC",
-      theme: "dark",
-      style: "1",
-      locale: "en",
-      toolbar_bg: "#0a1530",
-      enable_publishing: false,
-      hide_top_toolbar: false,
-      hide_legend: false,
-      allow_symbol_change: true,
-      save_image: false,
-      backgroundColor: "rgba(5, 13, 36, 1)",
-      gridColor: "rgba(0, 212, 255, 0.06)",
-      support_host: "https://www.tradingview.com",
-    });
-    container.appendChild(script);
-    host.appendChild(container);
-
-    return () => {
-      host.innerHTML = "";
-    };
-  }, [symbol, interval]);
-
-  return <div ref={hostRef} className="h-[420px] w-full" />;
-=======
   const points = [18, 32, 24, 42, 37, 58, 55, 63, 60, 72, 68, 86];
   const width = 320;
   const height = 180;
@@ -134,7 +83,6 @@ function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
       </div>
     </div>
   );
->>>>>>> 92e224a (udapte)
 }
 
 function ChartsPage() {
