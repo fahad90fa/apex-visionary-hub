@@ -25,11 +25,11 @@ export const Route = createFileRoute("/social")({
 });
 
 const platforms = [
-  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C" },
-  { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc" },
-  { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55" },
-  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2" },
-  { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366" },
+  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy" },
+  { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
+  { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55", href: "https://www.tiktok.com/@apex.forex.academy?_r=1&_t=ZS-97cK7bAxcAL" },
+  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/apexforexacademy" },
+  { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366", href: "https://wa.me/923166513780" },
 ];
 
 const feed = [
@@ -53,7 +53,9 @@ function SocialPage() {
             {platforms.map((p, i) => (
               <Reveal key={p.label} delay={i * 80}>
                 <a
-                  href="#"
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative block overflow-hidden rounded-2xl border border-white/5 bg-[rgba(5,15,40,0.6)] p-7 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.04]"
                   style={{ ["--c" as string]: p.color }}
                   onMouseEnter={e => (e.currentTarget.style.boxShadow = `0 24px 60px ${p.color}55, 0 0 0 1px ${p.color}77`)}
