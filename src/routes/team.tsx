@@ -25,7 +25,7 @@ const team = [
   { name: "Hassan bilal", role: "Portfolio Manager", color: "var(--neon-purple)", bio: "Delivering steady portfolio growth through high-probability trades and disciplined risk management.", years: "3 yrs", tags: ["AssetManagement", "FundManager", "CapitalManagement"], image: hassanPic },
 ];
 
-function TeamPage() {
+function TeamPage() { 
   return (
     <>
       {/* ticker */}
@@ -94,12 +94,14 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
               </div>
             </div>
             <h3 className="mt-6 font-display text-2xl font-bold text-white">{member.name}</h3>
-            <span
-              className="mt-3 inline-flex rounded-full border px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.2em]"
-              style={{ borderColor: `${member.color}55`, color: member.color, background: `${member.color}10` }}
-            >
-              {member.role}
-            </span>
+            {member.name !== "Hassan bilal" ? (
+              <span
+                className="mt-3 inline-flex rounded-full border px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.2em]"
+                style={{ borderColor: `${member.color}55`, color: member.color, background: `${member.color}10` }}
+              >
+                {member.role}
+              </span>
+            ) : null}
             <p className="mt-6 font-sub text-xs uppercase tracking-[0.25em] text-muted-foreground">Hover to connect</p>
           </div>
         </div>
@@ -120,18 +122,26 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
                 <span key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-sub text-[11px] text-white/80">{t}</span>
               ))}
             </div>
-            <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-5">
-              <div className="flex gap-2">
-                {[Linkedin, Twitter, Send].map((Icon, i) => (
-                  <a key={i} href="#" className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-all hover:scale-110" style={{ ["--c" as string]: member.color }} onMouseEnter={e => (e.currentTarget.style.color = member.color, e.currentTarget.style.boxShadow = `0 0 18px ${member.color}66`)} onMouseLeave={e => (e.currentTarget.style.color = "", e.currentTarget.style.boxShadow = "")}>
-                    <Icon size={15} />
-                  </a>
-                ))}
+            {member.name === "Adil tanveer" ? (
+              <div className="mt-auto flex items-end justify-end border-t border-white/5 pt-5">
+                <span className="font-sub text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Team Member
+                </span>
               </div>
-              <a href="#" className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-black" style={{ background: member.color, boxShadow: `0 0 20px ${member.color}88` }}>
-                Connect
-              </a>
-            </div>
+            ) : (
+              <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-5">
+                <div className="flex gap-2">
+                  {[Linkedin, Twitter, Send].map((Icon, i) => (
+                    <a key={i} href="#" className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-all hover:scale-110" style={{ ["--c" as string]: member.color }} onMouseEnter={e => (e.currentTarget.style.color = member.color, e.currentTarget.style.boxShadow = `0 0 18px ${member.color}66`)} onMouseLeave={e => (e.currentTarget.style.color = "", e.currentTarget.style.boxShadow = "")}>
+                      <Icon size={15} />
+                    </a>
+                  ))}
+                </div>
+                <a href="#" className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-black" style={{ background: member.color, boxShadow: `0 0 20px ${member.color}88` }}>
+                  Connect
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
