@@ -5,36 +5,35 @@ import { ArrowRight, ChevronDown, Play, Shield, Globe, Cpu, LineChart, Quote, St
 import { ParticleField } from "../components/ParticleField";
 import { CandlestickBg } from "../components/CandlestickBg";
 
-function TVMiniEURUSD() {
-  const points = [24, 30, 29, 41, 39, 52, 57, 72, 68, 78];
-  const width = 320;
-  const height = 140;
-  const max = Math.max(...points);
-  const min = Math.min(...points);
-  const stepX = width / (points.length - 1);
-  const path = points
-    .map((point, index) => {
-      const x = index * stepX;
-      const y = height - ((point - min) / (max - min || 1)) * (height - 20) - 10;
-      return `${index === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
-    })
-    .join(" ");
+function TVMiniXAUUSD() {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <div className="relative h-full w-full overflow-hidden rounded-3xl bg-[#041022] shadow-[0_30px_120px_rgba(0,212,255,0.08)]">
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full">
-        <rect x="0" y="0" width={width} height={height} rx="26" fill="rgba(9, 18, 38, 0.95)" />
-        <path d={path} fill="none" stroke="#3ee2ff" strokeWidth="3" strokeLinecap="round" />
-        <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#heroGradient)" opacity="0.16" />
-        <defs>
-          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#3ee2ff" />
-            <stop offset="100%" stopColor="transparent" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  );
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol: "OANDA:XAUUSD",
+      width: "100%",
+      height: "100%",
+      locale: "en",
+      colorTheme: "dark",
+      isTransparent: true,
+      autosize: true,
+      largeChartUrl: "https://www.tradingview.com/chart/?symbol=OANDA%3AXAUUSD",
+      noTimeScale: false,
+    });
+    container.appendChild(script);
+
+    return () => {
+      container.innerHTML = "";
+    };
+  }, []);
+
+  return <div ref={containerRef} className="h-full w-full" />;
 }
 
 export const Route = createFileRoute("/")({
@@ -121,23 +120,23 @@ function Hero() {
 
         {/* Right visual: animated trading panel */}
         <div className="relative hidden lg:block">
-          <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-neon-blue/30 via-transparent to-neon-purple/30 blur-2xl" />
+          <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-gold/30 via-transparent to-neon-purple/30 blur-2xl" />
           <div className="relative glass-strong rounded-3xl p-5 animate-float">
             <div className="flex items-center justify-between border-b border-white/5 pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-neon-green shadow-[0_0_10px_#00ff88]" />
-                <span className="font-display text-xs font-bold tracking-[0.2em]">EUR/USD</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#ffd700]" />
+                <span className="font-display text-xs font-bold tracking-[0.2em]">XAU/USD</span>
               </div>
-              <span className="font-sub text-xs text-neon-green">+1.84%</span>
+              <span className="font-sub text-xs text-gold">LIVE GOLD</span>
             </div>
             <div className="my-3 font-display text-3xl font-black text-white">
-              1.0<span className="text-gradient">9248</span>
+              OANDA<span className="text-gradient">:XAUUSD</span>
             </div>
             <div className="relative h-44 overflow-hidden rounded-xl bg-black/40">
-              <TVMiniEURUSD />
+              <TVMiniXAUUSD />
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 font-sub text-[11px]">
-              {[["High", "1.0962", "text-neon-green"], ["Low", "1.0902", "text-destructive"], ["Vol", "2.4M", "text-neon-blue"]].map(([k, v, c]) => (
+              {[["High", "Live", "text-gold"], ["Low", "Live", "text-destructive"], ["Vol", "Live", "text-neon-blue"]].map(([k, v, c]) => (
                 <div key={k} className="rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-2">
                   <div className="text-muted-foreground">{k}</div>
                   <div className={`font-bold ${c}`}>{v}</div>
