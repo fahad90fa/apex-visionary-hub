@@ -16,7 +16,7 @@ function TVMiniXAUUSD() {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
-      symbol: "OANDA:XAUUSD",
+      symbol: "XAUUSD",
       width: "100%",
       height: "100%",
       locale: "en",
@@ -130,7 +130,7 @@ function Hero() {
               <span className="font-sub text-xs text-gold">LIVE GOLD</span>
             </div>
             <div className="my-3 font-display text-3xl font-black text-white">
-              OANDA<span className="text-gradient">:XAUUSD</span>
+              <span className="text-gradient">XAUUSD</span>
             </div>
             <div className="relative h-44 overflow-hidden rounded-xl bg-black/40">
               <TVMiniXAUUSD />

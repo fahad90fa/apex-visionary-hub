@@ -122,7 +122,7 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
                 <span key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-sub text-[11px] text-white/80">{t}</span>
               ))}
             </div>
-            {member.name === "Adil tanveer" ? (
+            {member.name === "MUHAMMAD AZEEM " || member.name === "Hassan bilal" ? (
               <div className="mt-auto flex items-end justify-end border-t border-white/5 pt-5">
                 <span className="font-sub text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                   Team Member

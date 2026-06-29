@@ -18,7 +18,7 @@ export const Route = createFileRoute("/charts")({
 type ChartDef = { title: string; symbol: string };
 
 const CHARTS: ChartDef[] = [
-  { title: "XAU/USD — Gold", symbol: "OANDA:XAUUSD" },
+  { title: "XAU/USD — Gold", symbol: "XAUUSD" },
   { title: "BTC/USD — Bitcoin", symbol: "BINANCE:BTCUSDT" },
   { title: "ETH/USD — Ethereum", symbol: "BINANCE:ETHUSDT" },
   { title: "EUR/USD — Forex", symbol: "FX:EURUSD" },
