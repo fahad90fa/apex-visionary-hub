@@ -68,10 +68,10 @@ export function Footer() {
           <div>
             <h4 className="font-sub text-xs font-bold uppercase tracking-[0.22em] text-neon-blue">Contact Us</h4>
             <ul className="mt-5 space-y-4 font-sub text-sm text-muted-foreground">
-              <li className="flex gap-3"><MapPin size={16} className="mt-0.5 shrink-0 text-neon-blue" /> 14F, Skyline Financial Tower, Dubai Marina, UAE</li>
-              <li className="flex gap-3"><Phone size={16} className="mt-0.5 shrink-0 text-neon-green" /> +971 4 555 0188</li>
-              <li className="flex gap-3"><Mail size={16} className="mt-0.5 shrink-0 text-neon-purple" /> hello@apexforexacademy.com</li>
-              <li className="flex gap-3"><Clock size={16} className="mt-0.5 shrink-0 text-gold" /> Mon – Sat: 9:00 AM – 6:00 PM</li>
+              <li className="flex gap-3"><MapPin size={16} className="mt-0.5 shrink-0 text-neon-blue" /> Plot Number 44 45 Mumtaz Market Gujranwala , Pakistan</li>
+              <li className="flex gap-3"><Phone size={16} className="mt-0.5 shrink-0 text-neon-green" /> +92 3166513780</li>
+              <li className="flex gap-3"><Mail size={16} className="mt-0.5 shrink-0 text-neon-purple" /> apexforex0@gmail.com</li>
+              <li className="flex gap-3"><Clock size={16} className="mt-0.5 shrink-0 text-gold" /> Mon – Fri : 11:00 AM – 9:00 PM</li>
             </ul>
           </div>
         </div>

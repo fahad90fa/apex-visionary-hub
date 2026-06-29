@@ -5,6 +5,7 @@ import { Reveal } from "./index";
 import { CandlestickBg } from "../components/CandlestickBg";
 import adilPic from "../pics/adil.jpeg";
 import azeemPic from "../pics/azeem.jpeg";
+import hassanPic from "../pics/hassan.jpeg";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -12,16 +13,16 @@ export const Route = createFileRoute("/team")({
       { title: "Team — Apex Forex Academy" },
       { name: "description", content: "Meet the elite mentors guiding your trading journey at Apex Forex Academy." },
       { property: "og:title", content: "Meet the Market Experts — Apex Forex" },
-      { property: "og:description", content: "Head Trader, Technical Analyst, Risk Manager, and Lead Mentor." },
+      { property: "og:description", content: "Mentor, Portfolio Manager, Portfolio Manager, and Lead Mentor." },
     ],
   }),
   component: TeamPage,
 });
 
 const team = [
-  { name: "Adil tanveer", role: "Head Trader", color: "var(--neon-blue)", bio: "15+ years trading FX and indices at major institutional desks across London and Singapore.", years: "15+ yrs", tags: ["FX Majors", "Order Flow", "Macro"], image: adilPic },
-  { name: "MUHAMMAD AZEEM ", role: "Technical Analyst", color: "var(--neon-green)", bio: "Specialist in market structure, Elliott Wave and Fibonacci confluence across timeframes.", years: "12 yrs", tags: ["Price Action", "Wyckoff", "SMC"], image: azeemPic },
-  { name: "Hassan bilal", role: "Risk Manager", color: "var(--neon-purple)", bio: "Former hedge fund risk officer. Builds the academy's capital-preservation playbooks.", years: "10 yrs", tags: ["Position Sizing", "Drawdown", "Hedging"] },
+  { name: "Adil tanveer", role: "Mentor", color: "var(--neon-blue)", bio: "Turning beginners into confident traders with real market experience and smart trading systems.", years: "6+ yrs", tags: ["TechnicalAnalysis", "FundamentalAnalysis", "TradingPsychology"], image: adilPic },
+  { name: "MUHAMMAD AZEEM ", role: "Community Manager", color: "var(--neon-green)", bio: "Providing top level support, managing members, and maintaining a high-quality trading environment.", years: "3+ yrs", tags: ["ClientSupport", "SupportTeam", "MemberGrowth"], image: azeemPic },
+  { name: "Hassan bilal", role: "Portfolio Manager", color: "var(--neon-purple)", bio: "Delivering steady portfolio growth through high-probability trades and disciplined risk management.", years: "3 yrs", tags: ["AssetManagement", "FundManager", "CapitalManagement"], image: hassanPic },
 ];
 
 function TeamPage() {

@@ -16,9 +16,9 @@ export const Route = createFileRoute("/location")({
 });
 
 const items = [
-  { Icon: MapPin, color: "var(--neon-blue)", label: "Office Address", value: "14F, Skyline Financial Tower, Dubai Marina, United Arab Emirates" },
-  { Icon: Phone, color: "var(--neon-green)", label: "Phone Number", value: "+971 4 555 0188" },
-  { Icon: Mail, color: "var(--neon-purple)", label: "Email Address", value: "hello@apexforexacademy.com" },
+  { Icon: MapPin, color: "var(--neon-blue)", label: "Office Address", value: "Plot Number 44 45 Mumtaz Market Gujranwala, Pakistan" },
+  { Icon: Phone, color: "var(--neon-green)", label: "Phone Number", value: "+92 3166513780" },
+  { Icon: Mail, color: "var(--neon-purple)", label: "Email Address", value: "apexforex0@gmail.com" },
   { Icon: Clock, color: "var(--gold)", label: "Office Hours", value: "Monday – Saturday · 9:00 AM – 6:00 PM" },
 ];
 
@@ -86,7 +86,7 @@ function LocationPage() {
                 <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between rounded-xl border border-white/10 bg-black/60 px-4 py-3 backdrop-blur-md">
                   <div>
                     <div className="font-sub text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Apex HQ</div>
-                    <div className="font-display text-sm font-bold text-white">Dubai Marina, UAE</div>
+                    <div className="font-display text-sm font-bold text-white">Pakistan, Gujranwala</div>
                   </div>
                   <span className="rounded-full bg-neon-green/15 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-neon-green">Open Now</span>
                 </div>
