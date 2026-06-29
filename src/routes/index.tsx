@@ -5,36 +5,35 @@ import { ArrowRight, ChevronDown, Play, Shield, Globe, Cpu, LineChart, Quote, St
 import { ParticleField } from "../components/ParticleField";
 import { CandlestickBg } from "../components/CandlestickBg";
 
-function TVMiniEURUSD() {
-  const points = [24, 30, 29, 41, 39, 52, 57, 72, 68, 78];
-  const width = 320;
-  const height = 140;
-  const max = Math.max(...points);
-  const min = Math.min(...points);
-  const stepX = width / (points.length - 1);
-  const path = points
-    .map((point, index) => {
-      const x = index * stepX;
-      const y = height - ((point - min) / (max - min || 1)) * (height - 20) - 10;
-      return `${index === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
-    })
-    .join(" ");
+function TVMiniXAUUSD() {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <div className="relative h-full w-full overflow-hidden rounded-3xl bg-[#041022] shadow-[0_30px_120px_rgba(0,212,255,0.08)]">
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full">
-        <rect x="0" y="0" width={width} height={height} rx="26" fill="rgba(9, 18, 38, 0.95)" />
-        <path d={path} fill="none" stroke="#3ee2ff" strokeWidth="3" strokeLinecap="round" />
-        <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#heroGradient)" opacity="0.16" />
-        <defs>
-          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#3ee2ff" />
-            <stop offset="100%" stopColor="transparent" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  );
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol: "OANDA:XAUUSD",
+      width: "100%",
+      height: "100%",
+      locale: "en",
+      colorTheme: "dark",
+      isTransparent: true,
+      autosize: true,
+      largeChartUrl: "https://www.tradingview.com/chart/?symbol=OANDA%3AXAUUSD",
+      noTimeScale: false,
+    });
+    container.appendChild(script);
+
+    return () => {
+      container.innerHTML = "";
+    };
+  }, []);
+
+  return <div ref={containerRef} className="h-full w-full" />;
 }
 
 export const Route = createFileRoute("/")({
