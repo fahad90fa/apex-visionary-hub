@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import unnamedPic from "../pics/unnamed.jpg";
 
 export function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -35,9 +36,11 @@ export function Preloader() {
 
       <div className="relative flex flex-col items-center gap-8 px-6 text-center">
         <div className="flex items-center gap-3">
-          <div className="relative h-12 w-12 animate-pulse-glow rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple grid place-items-center">
-            <span className="font-display text-xl font-black text-black">A</span>
-          </div>
+          <img
+            src={unnamedPic}
+            alt="Apex Forex logo"
+            className="relative h-24 w-24 animate-pulse-glow rounded-xl object-cover"
+          />
           <div className="font-display text-2xl sm:text-3xl font-black tracking-[0.2em] text-gradient">
             APEX FOREX
           </div>

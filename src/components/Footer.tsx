@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Send, Youtube, Facebook, MessageCircle, MapPin, Phone, Mail, Clock } from "lucide-react";
+import unnamedPic from "../pics/unnamed.jpg";
 
 const socials = [
   { Icon: Instagram, label: "Instagram", color: "#E1306C" },
@@ -18,13 +19,12 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-neon-blue to-neon-purple shadow-[0_0_18px_rgba(0,212,255,0.6)]">
-                <span className="font-display text-base font-black text-black">A</span>
-              </div>
-              <span className="font-display text-base font-black tracking-[0.22em]">
-                APEX<span className="text-gradient">FOREX</span>
-              </span>
+            <Link to="/" className="flex items-center">
+              <img
+                src={unnamedPic}
+                alt="Apex Forex logo"
+                className="h-20 w-20 rounded-lg object-cover shadow-[0_0_24px_rgba(0,212,255,0.75)]"
+              />
             </Link>
             <p className="mt-5 font-sub text-sm leading-relaxed text-muted-foreground">
               Where Future Traders Are Built. An elite Forex education ecosystem combining institutional knowledge with a global community of serious traders.

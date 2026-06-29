@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Play, Shield, Globe, Cpu, LineChart, Quote, Star } from "lucide-react";
 import { ParticleField } from "../components/ParticleField";
 import { CandlestickBg } from "../components/CandlestickBg";
+import teamVideo from "../pics/team.mp4";
 
 function TVMiniXAUUSD() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -109,7 +110,7 @@ function Hero() {
 
           {/* mini stat strip */}
           <div className="mt-12 grid max-w-md animate-fade-up grid-cols-3 gap-4 lg:mx-0 mx-auto" style={{ animationDelay: "500ms" }}>
-            {[["5K+", "Traders"], ["95%", "Success"], ["10+", "Mentors"]].map(([n, l]) => (
+            {[["5K+", "Traders"], ["95%", "Success"], ["3+", "Mentors"]].map(([n, l]) => (
               <div key={l} className="glass px-3 py-3 text-center">
                 <div className="font-display text-xl font-black text-gradient">{n}</div>
                 <div className="font-sub text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{l}</div>
@@ -201,7 +202,7 @@ function Stats() {
   const stats = [
     { value: 5000, suffix: "+", label: "Students Enrolled" },
     { value: 95, suffix: "%", label: "Success Rate" },
-    { value: 10, suffix: "+", label: "Expert Mentors" },
+    { value: 3, suffix: "+", label: "Expert Mentors" },
   ];
   return (
     <section className="relative py-20">
@@ -268,19 +269,16 @@ function VideoShowcase() {
         <Reveal>
           <div className="relative mt-14">
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-neon-blue via-neon-purple to-gold opacity-50 blur-xl" />
-            <div className="relative aspect-video overflow-hidden rounded-2xl border border-neon-blue/40 bg-black">
-              <CandlestickBg opacity={0.35} />
-              <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/60" />
-              {/* corner brackets */}
-              {[
-                "left-4 top-4 border-l-2 border-t-2",
-                "right-4 top-4 border-r-2 border-t-2",
-                "left-4 bottom-4 border-l-2 border-b-2",
-                "right-4 bottom-4 border-r-2 border-b-2",
-              ].map(c => <span key={c} className={`absolute h-8 w-8 border-neon-blue ${c}`} />)}
-              <button className="absolute inset-0 m-auto grid h-20 w-20 place-items-center rounded-full border border-neon-blue/60 bg-black/40 text-neon-blue backdrop-blur-md transition-transform hover:scale-110 animate-pulse-glow">
-                <Play size={28} fill="currentColor" />
-              </button>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-neon-blue/40 bg-black max-w-full">
+              <video
+                src={teamVideo}
+                className="h-full w-full object-cover bg-black"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              />
             </div>
           </div>
         </Reveal>
@@ -335,7 +333,7 @@ function Testimonials() {
   );
 }
 
-/* ---------------- shared ---------------- */
+/* ---------------- shared ---------------- */ 
 
 export function SectionTitle({ eyebrow, title, subtitle }: { eyebrow?: string; title: React.ReactNode; subtitle?: string }) {
   return (

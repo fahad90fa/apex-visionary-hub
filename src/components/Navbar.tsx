@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import unnamedPic from "../pics/unnamed.jpg";
 
 const links = [
   { to: "/", label: "Home" },
@@ -35,13 +36,12 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
-        <Link to="/" className="group flex items-center gap-2.5">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-neon-blue to-neon-purple shadow-[0_0_18px_rgba(0,212,255,0.6)] transition-transform group-hover:scale-105">
-            <span className="font-display text-base font-black text-black">A</span>
-          </div>
-          <span className="font-display text-sm font-black tracking-[0.22em] text-white sm:text-base">
-            APEX<span className="text-gradient">FOREX</span>
-          </span>
+        <Link to="/" className="group flex items-center">
+          <img
+            src={unnamedPic}
+            alt="Apex Forex logo"
+            className="h-16 w-16 rounded-lg object-cover shadow-[0_0_22px_rgba(0,212,255,0.7)] transition-transform group-hover:scale-105"
+          />
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
