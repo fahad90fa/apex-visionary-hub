@@ -82,7 +82,12 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
               <div className="absolute inset-0 -m-2 animate-spin-slow rounded-full border border-dashed" style={{ borderColor: `${member.color}66` }} />
               <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-white/10 shadow-lg" style={{ boxShadow: `0 0 30px ${member.color}66`, backgroundColor: '#000' }}>
                 {member.image ? (
-                  <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="h-full w-full object-cover"
+                    style={member.name === "Hassan bilal" ? { objectPosition: "center 20%" } : undefined}
+                  />
                 ) : (
                   <div
                     className="grid h-full w-full place-items-center font-display text-3xl font-black text-white"
@@ -94,15 +99,15 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
               </div>
             </div>
             <h3 className="mt-6 font-display text-2xl font-bold text-white">{member.name}</h3>
-            {member.name !== "Hassan bilal" ? (
-              <span
-                className="mt-3 inline-flex rounded-full border px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.2em]"
-                style={{ borderColor: `${member.color}55`, color: member.color, background: `${member.color}10` }}
-              >
-                {member.role}
-              </span>
+            <span
+              className="mt-3 inline-flex rounded-full border px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.2em]"
+              style={{ borderColor: `${member.color}55`, color: member.color, background: `${member.color}10` }}
+            >
+              {member.role}
+            </span>
+            {(member.name !== "MUHAMMAD AZEEM " && member.name !== "Hassan bilal" && member.name !== "Adil tanveer") ? (
+              <p className="mt-6 font-sub text-xs uppercase tracking-[0.25em] text-muted-foreground">Hover to connect</p>
             ) : null}
-            <p className="mt-6 font-sub text-xs uppercase tracking-[0.25em] text-muted-foreground">Hover to connect</p>
           </div>
         </div>
 
@@ -122,7 +127,7 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
                 <span key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-sub text-[11px] text-white/80">{t}</span>
               ))}
             </div>
-            {member.name === "MUHAMMAD AZEEM " || member.name === "Hassan bilal" ? (
+            {member.name === "MUHAMMAD AZEEM " || member.name === "Hassan bilal" || member.name === "Adil tanveer" ? (
               <div className="mt-auto flex items-end justify-end border-t border-white/5 pt-5">
                 <span className="font-sub text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                   Team Member
