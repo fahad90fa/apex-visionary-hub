@@ -53,7 +53,9 @@ function SocialPage() {
             {platforms.map((p, i) => (
               <Reveal key={p.label} delay={i * 80}>
                 <a
-                  href="#"
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative block overflow-hidden rounded-2xl border border-white/5 bg-[rgba(5,15,40,0.6)] p-7 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.04]"
                   style={{ ["--c" as string]: p.color }}
                   onMouseEnter={e => (e.currentTarget.style.boxShadow = `0 24px 60px ${p.color}55, 0 0 0 1px ${p.color}77`)}
