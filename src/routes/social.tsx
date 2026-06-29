@@ -1,13 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Send, Youtube, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { Reveal, SectionTitle } from "./index";
+
+const TikTokIcon = ({ size = 24, color = "#FE2C55" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z"
+      fill={color}
+    />
+  </svg>
+);
 
 export const Route = createFileRoute("/social")({
   head: () => ({
     meta: [
       { title: "Social — Apex Forex Academy" },
-      { name: "description", content: "Connect with Apex Forex Academy on Instagram, Telegram, YouTube, Facebook, and WhatsApp." },
+      { name: "description", content: "Connect with Apex Forex Academy on Instagram, Telegram, TikTok, Facebook, and WhatsApp." },
       { property: "og:title", content: "Connect With Us — Apex Forex" },
       { property: "og:description", content: "Follow our journey and join the community across all platforms." },
     ],
@@ -18,7 +27,7 @@ export const Route = createFileRoute("/social")({
 const platforms = [
   { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C" },
   { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc" },
-  { Icon: Youtube, label: "YouTube", sub: "Watch & Learn", color: "#FF0000" },
+  { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55" },
   { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2" },
   { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366" },
 ];
@@ -26,7 +35,7 @@ const platforms = [
 const feed = [
   { platform: "Instagram", Icon: Instagram, color: "#E1306C", text: "EUR/USD breakdown from this morning's live session. Clean rejection at supply, 1:4 RR runner closed.", likes: 1248, comments: 89, shares: 42 },
   { platform: "Telegram", Icon: Send, color: "#0088cc", text: "Today's signal pack is live in the channel. 3 setups across FX majors with full risk plans.", likes: 642, comments: 51, shares: 88 },
-  { platform: "YouTube", Icon: Youtube, color: "#FF0000", text: "New masterclass: How professionals size positions during high-impact news. Watch now.", likes: 2104, comments: 213, shares: 156 },
+  { platform: "TikTok", Icon: TikTokIcon, color: "#FE2C55", text: "New 60-second breakdown: how pros read order flow before a breakout. Watch now.", likes: 3420, comments: 178, shares: 312 },
 ];
 
 function SocialPage() {
