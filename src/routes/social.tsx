@@ -4,7 +4,6 @@ import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2,
 import { PageHero } from "../components/PageHero";
 import { Reveal, SectionTitle } from "./index";
 
-<<<<<<< HEAD
 const TikTokIcon = ({ size = 24, color = "#FE2C55" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -13,16 +12,6 @@ const TikTokIcon = ({ size = 24, color = "#FE2C55" }: { size?: number; color?: s
     />
   </svg>
 );
-=======
-function TikTok(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M204.7 68.7a67.5 67.5 0 0 1-31.5-8.7v59.4a45.2 45.2 0 1 1-45.2-45.2V80.5a90.4 90.4 0 1 0 76.7 88.8z" />
-      <path d="M122 224.3a44.1 44.1 0 1 0-44.1-44.1v-64.6h24v64.6a20.1 20.1 0 1 1 20.1 20.1z" />
-    </svg>
-  );
-}
->>>>>>> d387b2c (updae)
 
 export const Route = createFileRoute("/social")({
   head: () => ({
@@ -37,29 +26,17 @@ export const Route = createFileRoute("/social")({
 });
 
 const platforms = [
-<<<<<<< HEAD
-  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy" },
+  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy?igsh=MTNyeW5jcThqa29u" },
   { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
   { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55", href: "https://www.tiktok.com/@apex.forex.academy?_r=1&_t=ZS-97cK7bAxcAL" },
-  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/apexforexacademy" },
+  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/share/1EniqmTA4D/?mibextid=wwXIfr" },
   { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366", href: "https://wa.me/923166513780" },
-=======
-  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C" },
-  { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc" },
-  { Icon: TikTok, label: "TikTok", sub: "Watch & Learn", color: "#010101" },
-  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2" },
-  { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366" },
->>>>>>> d387b2c (updae)
 ];
 
 const feed = [
   { platform: "Instagram", Icon: Instagram, color: "#E1306C", text: "EUR/USD breakdown from this morning's live session. Clean rejection at supply, 1:4 RR runner closed.", likes: 1248, comments: 89, shares: 42 },
   { platform: "Telegram", Icon: Send, color: "#0088cc", text: "Today's signal pack is live in the channel. 3 setups across FX majors with full risk plans.", likes: 642, comments: 51, shares: 88 },
-<<<<<<< HEAD
   { platform: "TikTok", Icon: TikTokIcon, color: "#FE2C55", text: "New 60-second breakdown: how pros read order flow before a breakout. Watch now.", likes: 3420, comments: 178, shares: 312 },
-=======
-  { platform: "TikTok", Icon: TikTok, color: "#010101", text: "New short: How professionals size positions during high-impact news. Watch now.", likes: 2104, comments: 213, shares: 156 },
->>>>>>> d387b2c (updae)
 ];
 
 function SocialPage() {
