@@ -120,23 +120,23 @@ function Hero() {
 
         {/* Right visual: animated trading panel */}
         <div className="relative hidden lg:block">
-          <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-neon-blue/30 via-transparent to-neon-purple/30 blur-2xl" />
+          <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-gold/30 via-transparent to-neon-purple/30 blur-2xl" />
           <div className="relative glass-strong rounded-3xl p-5 animate-float">
             <div className="flex items-center justify-between border-b border-white/5 pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-neon-green shadow-[0_0_10px_#00ff88]" />
-                <span className="font-display text-xs font-bold tracking-[0.2em]">EUR/USD</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#ffd700]" />
+                <span className="font-display text-xs font-bold tracking-[0.2em]">XAU/USD</span>
               </div>
-              <span className="font-sub text-xs text-neon-green">+1.84%</span>
+              <span className="font-sub text-xs text-gold">LIVE GOLD</span>
             </div>
             <div className="my-3 font-display text-3xl font-black text-white">
-              1.0<span className="text-gradient">9248</span>
+              OANDA<span className="text-gradient">:XAUUSD</span>
             </div>
             <div className="relative h-44 overflow-hidden rounded-xl bg-black/40">
-              <TVMiniEURUSD />
+              <TVMiniXAUUSD />
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 font-sub text-[11px]">
-              {[["High", "1.0962", "text-neon-green"], ["Low", "1.0902", "text-destructive"], ["Vol", "2.4M", "text-neon-blue"]].map(([k, v, c]) => (
+              {[["High", "Live", "text-gold"], ["Low", "Live", "text-destructive"], ["Vol", "Live", "text-neon-blue"]].map(([k, v, c]) => (
                 <div key={k} className="rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-2">
                   <div className="text-muted-foreground">{k}</div>
                   <div className={`font-bold ${c}`}>{v}</div>
