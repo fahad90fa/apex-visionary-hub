@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { User, Mail, Phone, MessageSquare, ArrowRight, Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { PageHero } from "../components/PageHero";
+import { submitContactForm } from "../lib/contact.functions";
 import { Reveal } from "./index";
 
 export const Route = createFileRoute("/contact")({
@@ -51,12 +53,35 @@ function ContactPage() {
 }
 
 function ContactForm() {
-  const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const submitFn = useServerFn(submitContactForm);
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    full_name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setState("sending");
-    setTimeout(() => setState("sent"), 1400);
+    setError(null);
+
+    try {
+      await submitFn({
+        full_name: form.full_name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        message: form.message.trim(),
+      });
+
+      setForm({ full_name: "", email: "", phone: "", message: "" });
+      setState("sent");
+    } catch (err) {
+      setState("error");
+      setError(err instanceof Error ? err.message : "Unable to send your message right now.");
+    }
   };
 
   return (
@@ -65,28 +90,67 @@ function ContactForm() {
         <div className="h-px w-full animate-shimmer" />
       </div>
 
-      <Field Icon={User} label="Full Name" placeholder="Enter your full name" type="text" focusColor="var(--neon-blue)" />
-      <Field Icon={Mail} label="Email Address" placeholder="Enter your email address" type="email" focusColor="var(--neon-green)" />
-      <Field Icon={Phone} label="Phone Number" placeholder="Enter your phone number" type="tel" focusColor="var(--neon-purple)" />
-      <Field Icon={MessageSquare} label="Message" placeholder="Tell us about your trading goals..." type="textarea" focusColor="var(--gold)" />
+      <Field
+        Icon={User}
+        label="Full Name"
+        placeholder="Enter your full name"
+        type="text"
+        focusColor="var(--neon-blue)"
+        value={form.full_name}
+        onChange={value => setForm(prev => ({ ...prev, full_name: value }))}
+      />
+      <Field
+        Icon={Mail}
+        label="Email Address"
+        placeholder="Enter your email address"
+        type="email"
+        focusColor="var(--neon-green)"
+        value={form.email}
+        onChange={value => setForm(prev => ({ ...prev, email: value }))}
+      />
+      <Field
+        Icon={Phone}
+        label="Phone Number"
+        placeholder="Enter your phone number"
+        type="tel"
+        focusColor="var(--neon-purple)"
+        value={form.phone}
+        onChange={value => setForm(prev => ({ ...prev, phone: value }))}
+      />
+      <Field
+        Icon={MessageSquare}
+        label="Message"
+        placeholder="Tell us about your trading goals..."
+        type="textarea"
+        focusColor="var(--gold)"
+        value={form.message}
+        onChange={value => setForm(prev => ({ ...prev, message: value }))}
+      />
 
       <button
         type="submit"
-        disabled={state !== "idle"}
+        disabled={state === "sending"}
         className="group mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-neon-blue to-neon-green px-6 py-4 font-sub text-sm font-bold uppercase tracking-[0.25em] text-black shadow-[0_0_30px_rgba(0,212,255,0.55)] transition-all hover:scale-[1.01] disabled:opacity-90"
       >
         {state === "idle" && <>Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></>}
         {state === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending</>}
         {state === "sent" && <><Check size={16} /> Message Sent</>}
+        {state === "error" && <>Try Again</>}
       </button>
+
+      {state === "sent" && (
+        <p className="mt-4 text-center text-sm text-emerald-300">Thanks! Your message has been received and will appear in the admin inbox.</p>
+      )}
+      {state === "error" && error && (
+        <p className="mt-4 text-center text-sm text-red-300">{error}</p>
+      )}
     </form>
   );
 }
 
-function Field({ Icon, label, placeholder, type, focusColor }: { Icon: typeof User; label: string; placeholder: string; type: string; focusColor: string }) {
+function Field({ Icon, label, placeholder, type, focusColor, value, onChange }: { Icon: typeof User; label: string; placeholder: string; type: string; focusColor: string; value: string; onChange: (value: string) => void }) {
   const [focused, setFocused] = useState(false);
-  const [val, setVal] = useState("");
-  const floated = focused || val.length > 0;
+  const floated = focused || value.length > 0;
 
   const sharedClass =
     "peer w-full bg-transparent pl-11 pr-3 pt-6 pb-2 font-sub text-sm text-white placeholder-transparent outline-none";
@@ -119,8 +183,8 @@ function Field({ Icon, label, placeholder, type, focusColor }: { Icon: typeof Us
           <textarea
             rows={5}
             placeholder={placeholder}
-            value={val}
-            onChange={e => setVal(e.target.value)}
+            value={value}
+            onChange={e => onChange(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             className={sharedClass + " resize-none pt-7"}
@@ -129,8 +193,8 @@ function Field({ Icon, label, placeholder, type, focusColor }: { Icon: typeof Us
           <input
             type={type}
             placeholder={placeholder}
-            value={val}
-            onChange={e => setVal(e.target.value)}
+            value={value}
+            onChange={e => onChange(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             className={sharedClass + " h-14"}
