@@ -70,10 +70,12 @@ function ContactForm() {
 
     try {
       await submitFn({
-        full_name: form.full_name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        message: form.message.trim(),
+        data: {
+          full_name: form.full_name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          message: form.message.trim(),
+        },
       });
 
       setForm({ full_name: "", email: "", phone: "", message: "" });
