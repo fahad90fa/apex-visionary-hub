@@ -43,7 +43,7 @@ const updateSchema = z.object({
 // Admin-only save.
 export const saveSiteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: unknown) => updateSchema.parse(data))
+  .validator((data: unknown) => updateSchema.parse(data))
   .handler(async ({ data, context }) => {
     const { data: isAdmin } = await context.supabase.rpc("has_role", {
       _user_id: context.userId,
@@ -71,7 +71,7 @@ const bootstrapSchema = z.object({
 });
 
 export const bootstrapAdmin = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => bootstrapSchema.parse(data))
+  .validator((data: unknown) => bootstrapSchema.parse(data))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 

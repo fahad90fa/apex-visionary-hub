@@ -1,4 +1,4 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { LogOut, Save, Shield, Loader2, CheckCircle2, AlertCircle, Lock } from "lucide-react";
@@ -61,8 +61,13 @@ function AdminPage() {
     setError(null);
     const { data } = await supabase.auth.getSession();
     if (!data.session) {
-      const { available } = await fnBootstrapAvailable();
-      setMode(available ? "bootstrap" : "login");
+      try {
+        const { available } = await fnBootstrapAvailable();
+        setMode(available ? "bootstrap" : "login");
+      } catch (e) {
+        setError((e as Error).message);
+        setMode("login");
+      }
       return;
     }
     try {
@@ -198,17 +203,25 @@ function AdminPage() {
 
           {mode === "admin" && (
             <>
-              <div className="mb-6 flex items-center justify-between rounded-2xl border border-neon-green/20 bg-neon-green/5 px-5 py-3">
+              <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-neon-green/20 bg-neon-green/5 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-2 font-sub text-sm text-neon-green">
                   <Shield size={16} />
                   <span>Authenticated as administrator</span>
                 </div>
-                <button
-                  onClick={onLogout}
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 font-sub text-xs uppercase tracking-wider text-white/80 hover:bg-white/10"
-                >
-                  <LogOut size={12} /> Sign Out
-                </button>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    to="/admin/contact"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-sub text-xs uppercase tracking-[0.18em] text-white hover:bg-white/10"
+                  >
+                    View Contact Messages
+                  </Link>
+                  <button
+                    onClick={onLogout}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 font-sub text-xs uppercase tracking-[0.18em] text-white hover:bg-white/10"
+                  >
+                    <LogOut size={12} /> Sign Out
+                  </button>
+                </div>
               </div>
 
               {(["Contact", "Location", "Social"] as const).map((group) => (
