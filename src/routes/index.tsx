@@ -110,7 +110,7 @@ function Hero() {
 
           {/* mini stat strip */}
           <div className="mt-12 grid max-w-md animate-fade-up grid-cols-3 gap-4 lg:mx-0 mx-auto" style={{ animationDelay: "500ms" }}>
-            {[["5K+", "Traders"], ["95%", "Success"], ["3+", "Mentors"]].map(([n, l]) => (
+            {[["1K+", "Traders"], ["95%", "Success"], ["3+", "Mentors"]].map(([n, l]) => (
               <div key={l} className="glass px-3 py-3 text-center">
                 <div className="font-display text-xl font-black text-gradient">{n}</div>
                 <div className="font-sub text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{l}</div>
@@ -125,7 +125,7 @@ function Hero() {
           <div className="relative glass-strong rounded-3xl p-5 animate-float">
             <div className="flex items-center justify-between border-b border-white/5 pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#ffd700]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#6a0dad]" />
                 <span className="font-display text-xs font-bold tracking-[0.2em]">XAU/USD</span>
               </div>
               <span className="font-sub text-xs text-gold">LIVE GOLD</span>
@@ -200,7 +200,7 @@ function WhyChoose() {
 
 function Stats() {
   const stats = [
-    { value: 5000, suffix: "+", label: "Students Enrolled" },
+    { value: 1000, suffix: "+", label: "Students Enrolled" },
     { value: 95, suffix: "%", label: "Success Rate" },
     { value: 3, suffix: "+", label: "Expert Mentors" },
   ];

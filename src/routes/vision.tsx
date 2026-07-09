@@ -24,9 +24,9 @@ const pillars = [
 
 const milestones = [
   { year: "2019", title: "Academy Founded", text: "Apex launches with 12 students in a private mentorship pilot.", color: "var(--neon-blue)" },
-  { year: "2021", title: "First 1,000 Students", text: "The first thousand traders complete the core program.", color: "var(--neon-green)" },
+  { year: "2021", title: "First 500 Students", text: "The first thousand traders complete the core program.", color: "var(--neon-green)" },
   { year: "2023", title: "International Expansion", text: "Mentors and students across 28 countries.", color: "var(--neon-purple)" },
-  { year: "2025", title: "5,000+ Traders Trained", text: "Crossing the milestone with a 95% retention rate.", color: "var(--gold)" },
+  { year: "2025", title: "1,000+ Traders Trained", text: "Crossing the milestone with a 95% retention rate.", color: "var(--gold)" },
   { year: "Next", title: "The Future", text: "AI co-pilots, prop desk launches, and a global trader pipeline.", color: "var(--neon-blue)" },
 ];
 
