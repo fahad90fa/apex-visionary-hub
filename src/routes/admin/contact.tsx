@@ -18,7 +18,7 @@ export const Route = createFileRoute("/admin/contact")({
 
 type ContactMessage = {
   id: string;
-  full_name: string;
+  name: string;
   email: string;
   phone: string;
   message: string;
@@ -89,7 +89,7 @@ function AdminContactPage() {
                     <div key={message.id} className="glass rounded-3xl p-6">
                       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                          <h2 className="font-display text-xl font-bold text-white">{message.full_name}</h2>
+                          <h2 className="font-display text-xl font-bold text-white">{message.name}</h2>
                           <p className="mt-1 text-sm text-white/70">Submitted {new Date(message.created_at).toLocaleString()}</p>
                         </div>
                         <div className="grid gap-2 text-sm text-white/75 sm:text-right">

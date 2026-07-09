@@ -14,7 +14,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.from("contact_messages").insert({
-      full_name: data.full_name,
+      name: data.full_name,
       email: data.email,
       phone: data.phone,
       message: data.message,
@@ -36,7 +36,7 @@ export const getContactMessages = createServerFn({ method: "GET" })
 
     const { data, error } = await context.supabase
       .from("contact_messages")
-      .select("id, full_name, email, phone, message, created_at")
+      .select("id, name, email, phone, message, created_at")
       .order("created_at", { ascending: false });
 
     if (error) throw new Error(error.message);
