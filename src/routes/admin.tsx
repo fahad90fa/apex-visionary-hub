@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { LogOut, Save, Shield, Loader2, CheckCircle2, AlertCircle, Lock } from "lucide-react";
@@ -289,6 +289,7 @@ function AdminPage() {
               </div>
             </>
           )}
+          <Outlet />
         </div>
       </section>
     </>
