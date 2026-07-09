@@ -9,6 +9,11 @@ function isNewSupabaseApiKey(value: string): boolean {
   return value.startsWith('sb_publishable_') || value.startsWith('sb_secret_');
 }
 
+function getConfiguredSupabaseKey(primaryKey?: string, fallbackKey?: string): string | undefined {
+  const candidates = [primaryKey, fallbackKey].filter((value): value is string => Boolean(value?.trim()));
+  return candidates.find((value) => !value.includes('your-service-role-key-here') && !value.includes('your-publishable-key-here') && !value.includes('your-anon-key-here'));
+}
+
 function createSupabaseFetch(supabaseKey: string): typeof fetch {
   return (input, init) => {
     const headers = new Headers(
@@ -32,20 +37,26 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 function createSupabaseAdminClient() {
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY;
+  const resolvedKey = getConfiguredSupabaseKey(SUPABASE_SERVICE_ROLE_KEY, SUPABASE_PUBLISHABLE_KEY);
 
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+  if (!SUPABASE_URL || !resolvedKey) {
     const missing = [
       ...(!SUPABASE_URL ? ['SUPABASE_URL'] : []),
-      ...(!SUPABASE_SERVICE_ROLE_KEY ? ['SUPABASE_SERVICE_ROLE_KEY'] : []),
+      ...(!resolvedKey ? ['SUPABASE_SERVICE_ROLE_KEY or SUPABASE_PUBLISHABLE_KEY'] : []),
     ];
     const message = `Missing Supabase environment variable(s): ${missing.join(', ')}. Connect Supabase in Lovable Cloud.`;
     console.error(`[Supabase] ${message}`);
     throw new Error(message);
   }
 
-  return createClient<Database>(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+  if (!SUPABASE_SERVICE_ROLE_KEY || SUPABASE_SERVICE_ROLE_KEY.includes('your-service-role-key-here')) {
+    console.warn('[Supabase] Service role key is not configured. Falling back to the publishable key for this request.');
+  }
+
+  return createClient<Database>(SUPABASE_URL, resolvedKey, {
     global: {
-      fetch: createSupabaseFetch(SUPABASE_SERVICE_ROLE_KEY),
+      fetch: createSupabaseFetch(resolvedKey),
     },
     auth: {
       storage: undefined,
