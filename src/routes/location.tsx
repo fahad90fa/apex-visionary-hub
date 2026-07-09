@@ -47,9 +47,15 @@ function LocationPage() {
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr] lg:px-8">
           <Reveal>
-            <div className="relative">
+            <a
+              href="https://www.google.com/maps/place/Forex+Trading+Academy+%7C+Apex+Forex+Trading+Academy+%7C+Forex+Trading+Course+near+Gujranwala+%7C+Forex+trading/data=!4m2!3m1!1s0x0:0xf98e8b0378baa157?sa=X&ved=1t:2428&ictx=111&cshid=1783603530019561"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block group"
+              aria-label="Open Apex Forex Academy on Google Maps"
+            >
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-neon-blue/40 via-transparent to-neon-purple/40 blur-xl" />
-              <div className="relative aspect-[16/12] overflow-hidden rounded-3xl border border-neon-blue/40 bg-[#020818]">
+              <div className="relative aspect-[16/12] overflow-hidden rounded-3xl border border-neon-blue/40 bg-[#020818] cursor-pointer transition-transform group-hover:scale-[1.01]">
                 {[
                   "left-3 top-3 border-l-2 border-t-2",
                   "right-3 top-3 border-r-2 border-t-2",
@@ -88,10 +94,13 @@ function LocationPage() {
                     <div className="font-sub text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Apex HQ</div>
                     <div className="font-display text-sm font-bold text-white">Pakistan, Gujranwala</div>
                   </div>
-                  <span className="rounded-full bg-neon-green/15 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-neon-green">Open Now</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-neon-green/15 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-neon-green transition-all group-hover:bg-neon-green/25">
+                    <span className="h-1.5 w-1.5 rounded-full bg-neon-green shadow-[0_0_8px_#00ff88]" />
+                    Open Now · View on Maps
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </Reveal>
 
           <Reveal delay={150}>

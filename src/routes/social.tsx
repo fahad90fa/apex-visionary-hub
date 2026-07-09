@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, Youtube, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { Reveal, SectionTitle } from "./index";
 
@@ -29,6 +29,7 @@ const platforms = [
   { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy?igsh=MTNyeW5jcThqa29u" },
   { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
   { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55", href: "https://www.tiktok.com/@apex.forex.academy?_r=1&_t=ZS-97cK7bAxcAL" },
+  { Icon: Youtube, label: "YouTube", sub: "Watch Our Videos", color: "#FF0000", href: "https://www.youtube.com/@apexforexacademy" },
   { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/share/1EniqmTA4D/?mibextid=wwXIfr" },
   { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366", href: "https://wa.me/923166513780" },
 ];
