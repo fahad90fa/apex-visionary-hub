@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, Youtube, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { Reveal, SectionTitle } from "./index";
 
