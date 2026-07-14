@@ -9,11 +9,14 @@ import { Reveal } from "./index";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Apex Forex Academy" },
-      { name: "description", content: "Start your trading journey. Get in touch with the Apex Forex Academy team." },
-      { property: "og:title", content: "Start Your Trading Journey — Apex Forex" },
+      { title: "Contact Apex Forex Academy — Enroll in Pakistan's Top Forex Course" },
+      { name: "description", content: "Enroll in Pakistan's leading Forex trading course. Call +92 316 6513780 or message Apex Forex Academy Gujranwala to start your trading journey today." },
+      { name: "keywords", content: "contact forex academy Pakistan, enroll forex course, Apex Forex contact, forex classes Gujranwala, WhatsApp forex mentor" },
+      { property: "og:title", content: "Contact Apex Forex Academy" },
       { property: "og:description", content: "Reach our mentors and take the first step toward financial freedom." },
+      { property: "og:url", content: "https://www.apexacademypk.com/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/contact" }],
   }),
   component: ContactPage,
 });
