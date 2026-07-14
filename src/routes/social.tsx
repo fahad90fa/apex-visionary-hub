@@ -16,11 +16,14 @@ const TikTokIcon = ({ size = 24, color = "#FE2C55" }: { size?: number; color?: s
 export const Route = createFileRoute("/social")({
   head: () => ({
     meta: [
-      { title: "Social — Apex Forex Academy" },
-      { name: "description", content: "Connect with Apex Forex Academy on Instagram, Telegram, TikTok, Facebook, and WhatsApp." },
-      { property: "og:title", content: "Connect With Us — Apex Forex" },
-      { property: "og:description", content: "Follow our journey and join the community across all platforms." },
+      { title: "Follow Us on Social Media — Apex Forex Academy" },
+      { name: "description", content: "Follow Apex Forex Academy on Instagram, YouTube, TikTok, Telegram, Facebook & WhatsApp for daily Forex signals, market analysis & trading tips." },
+      { name: "keywords", content: "Apex Forex Instagram, forex signals Telegram, forex TikTok, forex YouTube channel, forex WhatsApp group Pakistan" },
+      { property: "og:title", content: "Follow Apex Forex Academy on Social Media" },
+      { property: "og:description", content: "Join our community on Instagram, YouTube, TikTok, Telegram, Facebook and WhatsApp." },
+      { property: "og:url", content: "https://www.apexacademypk.com/social" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/social" }],
   }),
   component: SocialPage,
 });

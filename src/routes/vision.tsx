@@ -6,11 +6,14 @@ import { Reveal, SectionTitle } from "./index";
 export const Route = createFileRoute("/vision")({
   head: () => ({
     meta: [
-      { title: "Vision — Apex Forex Academy" },
-      { name: "description", content: "Our vision: building the next generation of elite global traders through education, community, and discipline." },
-      { property: "og:title", content: "Our Vision — Apex Forex" },
-      { property: "og:description", content: "Democratizing institutional-grade trading education." },
+      { title: "Our Vision — Building Pakistan's Elite Traders | Apex Forex Academy" },
+      { name: "description", content: "Our vision at Apex Forex Academy: build the next generation of elite Pakistani Forex traders through institutional-grade education, community & discipline." },
+      { name: "keywords", content: "forex academy vision, forex education Pakistan, become a forex trader, trader mindset, Apex Forex vision" },
+      { property: "og:title", content: "Our Vision — Apex Forex Academy" },
+      { property: "og:description", content: "Democratizing institutional-grade Forex trading education in Pakistan." },
+      { property: "og:url", content: "https://www.apexacademypk.com/vision" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/vision" }],
   }),
   component: VisionPage,
 });

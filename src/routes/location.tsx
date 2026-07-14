@@ -6,11 +6,44 @@ import { Reveal } from "./index";
 export const Route = createFileRoute("/location")({
   head: () => ({
     meta: [
-      { title: "Location — Apex Forex Academy" },
-      { name: "description", content: "Visit Apex Forex Academy in Dubai. Address, hours, and contact details." },
-      { property: "og:title", content: "Visit Apex Forex" },
-      { property: "og:description", content: "Our doors are open — experience elite trading education firsthand." },
+      { title: "Visit Us in Gujranwala, Pakistan — Apex Forex Academy" },
+      { name: "description", content: "Visit Apex Forex Academy at Plot 44-45 Mumtaz Market, Gujranwala, Pakistan. Phone +92 316 6513780. Open Mon–Sat 9AM–6PM. Get directions on Google Maps." },
+      { name: "keywords", content: "forex academy Gujranwala, forex trading academy near me, Apex Forex location, forex academy Mumtaz Market, forex course Pakistan address" },
+      { property: "og:title", content: "Visit Apex Forex Academy — Gujranwala, Pakistan" },
+      { property: "og:description", content: "Our doors are open in Gujranwala — experience elite Forex trading education in person." },
+      { property: "og:url", content: "https://www.apexacademypk.com/location" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/location" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://www.apexacademypk.com/#localbusiness",
+        name: "Apex Forex Academy",
+        image: "https://www.apexacademypk.com/logo.png",
+        url: "https://www.apexacademypk.com/",
+        telephone: "+92-316-6513780",
+        email: "apexforex0@gmail.com",
+        priceRange: "$$",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Plot Number 44-45, Mumtaz Market",
+          addressLocality: "Gujranwala",
+          addressRegion: "Punjab",
+          postalCode: "52250",
+          addressCountry: "PK",
+        },
+        geo: { "@type": "GeoCoordinates", latitude: 32.1877, longitude: 74.1945 },
+        openingHoursSpecification: [{
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: "09:00",
+          closes: "18:00",
+        }],
+        hasMap: "https://www.google.com/maps/place/Forex+Trading+Academy+%7C+Apex+Forex+Trading+Academy",
+      }),
+    }],
   }),
   component: LocationPage,
 });

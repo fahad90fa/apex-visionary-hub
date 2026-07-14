@@ -6,11 +6,30 @@ import { Reveal } from "./index";
 export const Route = createFileRoute("/facilities")({
   head: () => ({
     meta: [
-      { title: "Facilities — Apex Forex Academy" },
-      { name: "description", content: "Live trading sessions, 1-on-1 mentorship, signals, risk training, and everything you need to trade professionally." },
-      { property: "og:title", content: "What We Provide — Apex Forex" },
-      { property: "og:description", content: "Everything you need to become a professional trader." },
+      { title: "Forex Course & Facilities — Live Sessions, Mentorship & Signals | Apex Forex Academy" },
+      { name: "description", content: "Complete Forex trading course in Gujranwala Pakistan: live trading sessions, 1-on-1 mentorship, daily signals, risk management, technical & fundamental analysis." },
+      { name: "keywords", content: "forex course Pakistan, forex training Gujranwala, live forex sessions, forex mentorship, forex signals, technical analysis course, forex risk management" },
+      { property: "og:title", content: "Forex Course & Facilities — Apex Forex Academy" },
+      { property: "og:description", content: "Everything you need to become a professional Forex trader — live sessions, mentorship, signals, and a private community." },
+      { property: "og:url", content: "https://www.apexacademypk.com/facilities" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/facilities" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: "Apex Forex Academy — Professional Forex Trading Course",
+        description: "Complete Forex trading course covering technical & fundamental analysis, risk management, trading psychology, and live market sessions.",
+        provider: {
+          "@type": "EducationalOrganization",
+          name: "Apex Forex Academy",
+          sameAs: "https://www.apexacademypk.com/",
+        },
+        educationalLevel: "Beginner to Advanced",
+        inLanguage: "en",
+      }),
+    }],
   }),
   component: FacilitiesPage,
 });

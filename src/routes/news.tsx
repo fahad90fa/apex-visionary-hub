@@ -15,11 +15,14 @@ const newsQuery = queryOptions({
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "Trading News — Apex Forex Academy" },
-      { name: "description", content: "Live high & medium impact forex news from ForexFactory plus real-time FX rates." },
-      { property: "og:title", content: "Trading News — Apex Forex" },
-      { property: "og:description", content: "High & medium impact events and live FX rates." },
+      { title: "Live Forex News & Economic Calendar — Apex Forex Academy" },
+      { name: "description", content: "Live high & medium impact Forex news from ForexFactory, real-time FX rates and economic calendar for Pakistani traders. Updated every 5 minutes." },
+      { name: "keywords", content: "forex news, forex factory news, economic calendar, live FX rates, high impact news, forex news Pakistan" },
+      { property: "og:title", content: "Live Forex News & Economic Calendar — Apex Forex Academy" },
+      { property: "og:description", content: "High & medium impact economic events and live FX rates for Forex traders." },
+      { property: "og:url", content: "https://www.apexacademypk.com/news" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/news" }],
   }),
   loader: ({ context }) => { context.queryClient.ensureQueryData(newsQuery); },
   component: NewsPage,

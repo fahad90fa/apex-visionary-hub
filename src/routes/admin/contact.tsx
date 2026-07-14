@@ -17,10 +17,10 @@ export const Route = createFileRoute("/admin/contact")({
 });
 
 type ContactMessage = {
-  id: string;
+  id: number;
   name: string;
   email: string;
-  phone: string;
+  phone: string | null;
   message: string;
   created_at: string;
 };

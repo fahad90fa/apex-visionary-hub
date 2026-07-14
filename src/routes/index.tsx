@@ -40,11 +40,14 @@ function TVMiniXAUUSD() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apex Forex Academy — Where Future Traders Are Built" },
-      { name: "description", content: "Elite Forex trading education with live mentorship, daily signals, and a global community of professional traders." },
-      { property: "og:title", content: "Apex Forex Academy" },
-      { property: "og:description", content: "Master the markets with elite Forex education." },
+      { title: "Apex Forex Academy — #1 Forex Trading Academy in Pakistan | Gujranwala" },
+      { name: "description", content: "Join Pakistan's #1 Forex trading academy in Gujranwala. Learn Forex, Gold (XAUUSD) & crypto trading with live mentorship, daily signals & expert mentors. Enroll today." },
+      { name: "keywords", content: "forex academy Pakistan, forex course Gujranwala, learn forex trading Pakistan, best forex academy, forex signals, gold trading course, XAUUSD, Apex Forex Academy" },
+      { property: "og:title", content: "Apex Forex Academy — #1 Forex Trading Academy in Pakistan" },
+      { property: "og:description", content: "Master Forex, Gold & crypto trading with live mentorship and daily signals in Gujranwala, Pakistan." },
+      { property: "og:url", content: "https://www.apexacademypk.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/" }],
   }),
   component: Home,
 });

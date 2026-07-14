@@ -10,11 +10,14 @@ import hassanPic from "../pics/hassan.jpeg";
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
-      { title: "Team — Apex Forex Academy" },
-      { name: "description", content: "Meet the elite mentors guiding your trading journey at Apex Forex Academy." },
-      { property: "og:title", content: "Meet the Market Experts — Apex Forex" },
-      { property: "og:description", content: "Mentor, Portfolio Manager, Portfolio Manager, and Lead Mentor." },
+      { title: "Meet Our Team — Expert Forex Mentors | Apex Forex Academy" },
+      { name: "description", content: "Meet the expert Forex mentors at Apex Forex Academy Pakistan — professional traders, portfolio managers & coaches guiding your trading journey." },
+      { name: "keywords", content: "forex mentors Pakistan, Apex Forex team, forex coach Gujranwala, professional forex traders, forex portfolio manager" },
+      { property: "og:title", content: "Meet the Market Experts — Apex Forex Academy" },
+      { property: "og:description", content: "Elite Forex mentors, portfolio managers and coaches guiding traders in Pakistan." },
+      { property: "og:url", content: "https://www.apexacademypk.com/team" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/team" }],
   }),
   component: TeamPage,
 });
