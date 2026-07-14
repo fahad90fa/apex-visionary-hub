@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as SocialRouteImport } from './routes/social'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as LocationRouteImport } from './routes/location'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
@@ -34,6 +35,11 @@ const TeamRoute = TeamRouteImport.update({
 const SocialRoute = SocialRouteImport.update({
   id: '/social',
   path: '/social',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
   '/news': typeof NewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
   '/news': typeof NewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/facilities': typeof FacilitiesRoute
   '/location': typeof LocationRoute
   '/news': typeof NewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social': typeof SocialRoute
   '/team': typeof TeamRoute
   '/vision': typeof VisionRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/location'
     | '/news'
+    | '/sitemap.xml'
     | '/social'
     | '/team'
     | '/vision'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/location'
     | '/news'
+    | '/sitemap.xml'
     | '/social'
     | '/team'
     | '/vision'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/location'
     | '/news'
+    | '/sitemap.xml'
     | '/social'
     | '/team'
     | '/vision'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   FacilitiesRoute: typeof FacilitiesRoute
   LocationRoute: typeof LocationRoute
   NewsRoute: typeof NewsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SocialRoute: typeof SocialRoute
   TeamRoute: typeof TeamRoute
   VisionRoute: typeof VisionRoute
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/social'
       fullPath: '/social'
       preLoaderRoute: typeof SocialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -272,6 +292,7 @@ const rootRouteChildren: RootRouteChildren = {
   FacilitiesRoute: FacilitiesRoute,
   LocationRoute: LocationRoute,
   NewsRoute: NewsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SocialRoute: SocialRoute,
   TeamRoute: TeamRoute,
   VisionRoute: VisionRoute,
