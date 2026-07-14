@@ -6,11 +6,14 @@ import TVEmbed from "@/components/TVEmbed";
 export const Route = createFileRoute("/charts")({
   head: () => ({
     meta: [
-      { title: "Live Charts — ApexForex" },
-      { name: "description", content: "Live TradingView charts for Gold, Bitcoin, Ethereum, EUR/USD and GBP/USD." },
-      { property: "og:title", content: "Live Charts — ApexForex" },
-      { property: "og:description", content: "Real-time market charts powered by TradingView." },
+      { title: "Live Forex Charts — Gold, Silver, BTC, EUR/USD | Apex Forex Academy" },
+      { name: "description", content: "Live TradingView charts for Gold (XAUUSD), Silver, Bitcoin, Ethereum, EUR/USD & GBP/USD. Real-time market analysis by Apex Forex Academy Pakistan." },
+      { name: "keywords", content: "live forex charts, XAUUSD live chart, gold price chart, silver chart, EURUSD chart, GBPUSD chart, BTC chart, TradingView charts" },
+      { property: "og:title", content: "Live Forex Charts — Apex Forex Academy" },
+      { property: "og:description", content: "Real-time Gold, Silver, Crypto & Forex charts powered by TradingView." },
+      { property: "og:url", content: "https://www.apexacademypk.com/charts" },
     ],
+    links: [{ rel: "canonical", href: "https://www.apexacademypk.com/charts" }],
   }),
   component: ChartsPage,
 });
