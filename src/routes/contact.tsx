@@ -23,6 +23,22 @@ export const Route = createFileRoute("/contact")({
 
 const symbols = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD"];
 
+const WHATSAPP_NUMBER = "923166513780";
+
+/** Builds the WhatsApp chat link with the enquiry prefilled as the message text. */
+function buildWhatsAppUrl(form: { full_name: string; email: string; phone: string; message: string }) {
+  const lines = [
+    "New enquiry from the Apex Forex Academy website",
+    "",
+    `Full Name: ${form.full_name}`,
+    `Email Address: ${form.email}`,
+    `Phone Number: ${form.phone}`,
+  ];
+  if (form.message) lines.push("", "Message:", form.message);
+  const text = encodeURIComponent(lines.join("\n"));
+  return `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text=${text}&type=phone_number&app_absent=0`;
+}
+
 function ContactPage() {
   return (
     <>
@@ -59,6 +75,7 @@ function ContactForm() {
   const submitFn = useServerFn(submitContactForm);
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [whatsappFallback, setWhatsappFallback] = useState<string | null>(null);
   const [form, setForm] = useState({
     full_name: "",
     email: "",
@@ -71,22 +88,29 @@ function ContactForm() {
     setState("sending");
     setError(null);
 
-    try {
-      await submitFn({
-        data: {
-          full_name: form.full_name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          message: form.message.trim(),
-        },
-      });
+    const data = {
+      full_name: form.full_name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      message: form.message.trim(),
+    };
+    const whatsappUrl = buildWhatsAppUrl(data);
+    setWhatsappFallback(whatsappUrl);
 
-      setForm({ full_name: "", email: "", phone: "", message: "" });
-      setState("sent");
+    // Save a copy to the admin inbox, but never let that hold up the WhatsApp hand-off:
+    // give it a few seconds and carry on even if it fails.
+    try {
+      await Promise.race([
+        submitFn({ data }),
+        new Promise(resolve => setTimeout(resolve, 4000)),
+      ]);
     } catch (err) {
-      setState("error");
-      setError(err instanceof Error ? err.message : "Unable to send your message right now.");
+      console.error("Contact form could not be saved to the inbox", err);
     }
+
+    setForm({ full_name: "", email: "", phone: "", message: "" });
+    setState("sent");
+    window.location.assign(whatsappUrl);
   };
 
   return (
@@ -98,6 +122,7 @@ function ContactForm() {
       <Field
         Icon={User}
         label="Full Name"
+        required
         placeholder="Enter your full name"
         type="text"
         focusColor="var(--gold)"
@@ -107,6 +132,7 @@ function ContactForm() {
       <Field
         Icon={Mail}
         label="Email Address"
+        required
         placeholder="Enter your email address"
         type="email"
         focusColor="var(--gold-light)"
@@ -116,6 +142,7 @@ function ContactForm() {
       <Field
         Icon={Phone}
         label="Phone Number"
+        required
         placeholder="Enter your phone number"
         type="tel"
         focusColor="var(--silver)"
@@ -139,12 +166,15 @@ function ContactForm() {
       >
         {state === "idle" && <>Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></>}
         {state === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending</>}
-        {state === "sent" && <><Check size={16} /> Message Sent</>}
+        {state === "sent" && <><Check size={16} /> Opening WhatsApp</>}
         {state === "error" && <>Try Again</>}
       </button>
 
       {state === "sent" && (
-        <p className="mt-4 text-center text-sm text-gold-light">Thanks! Your message has been received and will appear in the admin inbox.</p>
+        <p className="mt-4 text-center text-sm text-gold-light">
+          Thanks! Taking you to our WhatsApp chat with your message ready to send.{" "}
+          <a href={whatsappFallback ?? undefined} className="underline">Tap here if it does not open.</a>
+        </p>
       )}
       {state === "error" && error && (
         <p className="mt-4 text-center text-sm text-red-300">{error}</p>
@@ -153,7 +183,7 @@ function ContactForm() {
   );
 }
 
-function Field({ Icon, label, placeholder, type, focusColor, value, onChange }: { Icon: typeof User; label: string; placeholder: string; type: string; focusColor: string; value: string; onChange: (value: string) => void }) {
+function Field({ Icon, label, placeholder, type, focusColor, value, onChange, required }: { Icon: typeof User; label: string; placeholder: string; type: string; focusColor: string; value: string; onChange: (value: string) => void; required?: boolean }) {
   const [focused, setFocused] = useState(false);
   const floated = focused || value.length > 0;
 
@@ -203,6 +233,7 @@ function Field({ Icon, label, placeholder, type, focusColor, value, onChange }: 
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             className={sharedClass + " h-14"}
+            required={required}
           />
         )}
       </div>
