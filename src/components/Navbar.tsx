@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import unnamedPic from "../pics/unnamed.jpg";
+import logo from "../pics/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -38,9 +38,9 @@ export function Navbar() {
       <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link to="/" className="group flex items-center">
           <img
-            src={unnamedPic}
-            alt="Apex Forex logo"
-            className="h-16 w-16 rounded-lg object-cover shadow-[0_0_22px_rgba(0,212,255,0.7)] transition-transform group-hover:scale-105"
+            src={logo}
+            alt="Apex Forex Academy logo"
+            className="h-14 w-auto rounded-lg object-contain shadow-[0_0_22px_rgba(0,212,255,0.7)] transition-transform group-hover:scale-105"
           />
         </Link>
 

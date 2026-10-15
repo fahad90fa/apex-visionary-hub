@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -37,7 +38,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -93,6 +94,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -127,7 +131,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "https://www.instagram.com/apexforexacademy",
                 "https://t.me/apexforexacademy",
                 "https://www.tiktok.com/@apex.forex.academy",
-                "https://www.youtube.com/@apexforexacademy",
                 "https://www.facebook.com/share/1EniqmTA4D/",
                 "https://wa.me/923166513780",
               ],
