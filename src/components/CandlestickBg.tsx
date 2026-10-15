@@ -43,7 +43,7 @@ export function CandlestickBg({ opacity = 0.18 }: { opacity?: number }) {
       ctx.clearRect(0, 0, w, h);
       // sine wave line
       ctx.beginPath();
-      ctx.strokeStyle = `rgba(0, 255, 136, ${opacity * 1.2})`;
+      ctx.strokeStyle = `rgba(240,208,128, ${opacity * 1.2})`;
       ctx.lineWidth = 1.5;
       for (let x = 0; x <= w; x += 4) {
         const y = h / 2 + Math.sin((x + offset * 2) * 0.012) * 30 + Math.sin((x + offset) * 0.03) * 12;
@@ -65,7 +65,7 @@ export function CandlestickBg({ opacity = 0.18 }: { opacity?: number }) {
         const yHigh = padY + ((max - c.high) / range) * usableH;
         const yLow = padY + ((max - c.low) / range) * usableH;
         const up = c.close >= c.open;
-        const color = up ? `rgba(0, 255, 136, ${opacity})` : `rgba(255, 77, 109, ${opacity})`;
+        const color = up ? `rgba(240,208,128, ${opacity})` : `rgba(230, 235, 245, ${opacity})`;
         ctx.strokeStyle = color;
         ctx.fillStyle = color;
         ctx.lineWidth = 1;

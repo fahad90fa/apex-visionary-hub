@@ -23,23 +23,23 @@ export const Route = createFileRoute("/team")({
 });
 
 const team = [
-  { name: "Adil tanveer", role: "Mentor", color: "var(--neon-blue)", bio: "Turning beginners into confident traders with real market experience and smart trading systems.", years: "6+ yrs", tags: ["TechnicalAnalysis", "FundamentalAnalysis", "TradingPsychology"], image: adilPic },
-  { name: "MUHAMMAD AZEEM ", role: "Community Manager", color: "var(--neon-green)", bio: "Providing top level support, managing members, and maintaining a high-quality trading environment.", years: "3+ yrs", tags: ["ClientSupport", "SupportTeam", "MemberGrowth"], image: azeemPic },
-  { name: "Hassan bilal", role: "Portfolio Manager", color: "var(--neon-purple)", bio: "Delivering steady portfolio growth through high-probability trades and disciplined risk management.", years: "3 yrs", tags: ["AssetManagement", "FundManager", "CapitalManagement"], image: hassanPic },
+  { name: "Adil tanveer", role: "Mentor", color: "var(--gold)", bio: "Turning beginners into confident traders with real market experience and smart trading systems.", years: "6+ yrs", tags: ["TechnicalAnalysis", "FundamentalAnalysis", "TradingPsychology"], image: adilPic },
+  { name: "MUHAMMAD AZEEM ", role: "Community Manager", color: "var(--gold-light)", bio: "Providing top level support, managing members, and maintaining a high-quality trading environment.", years: "3+ yrs", tags: ["ClientSupport", "SupportTeam", "MemberGrowth"], image: azeemPic },
+  { name: "Hassan bilal", role: "Portfolio Manager", color: "var(--silver)", bio: "Delivering steady portfolio growth through high-probability trades and disciplined risk management.", years: "3 yrs", tags: ["AssetManagement", "FundManager", "CapitalManagement"], image: hassanPic },
 ];
 
 function TeamPage() { 
   return (
     <>
       {/* ticker */}
-      <div className="fixed top-[72px] z-30 w-full overflow-hidden border-y border-white/5 bg-black/70 py-1.5 backdrop-blur-md">
+      <div className="fixed top-[72px] z-30 w-full overflow-hidden border-y border-white/5 bg-navy-deep/70 py-1.5 backdrop-blur-md">
         <div className="flex w-[200%] animate-ticker gap-10 whitespace-nowrap font-sub text-[11px] uppercase tracking-[0.2em]">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex shrink-0 gap-10">
               {[["EUR/USD", "1.0924", true], ["GBP/USD", "1.2731", true], ["USD/JPY", "151.84", false], ["AUD/USD", "0.6612", false], ["XAU/USD", "2412.30", true], ["BTC/USD", "68,420", true], ["USD/CAD", "1.3608", false], ["NZD/USD", "0.5984", true]].map(([p, v, up]) => (
                 <span key={`${k}-${p}`} className="flex items-center gap-2 text-muted-foreground">
                   <span className="text-white">{p as string}</span>
-                  <span className={(up ? "text-neon-green" : "text-destructive")}>{v as string}</span>
+                  <span className={(up ? "text-gold-light" : "text-destructive")}>{v as string}</span>
                 </span>
               ))}
             </div>
@@ -145,7 +145,7 @@ function FlipCard({ member }: { member: (typeof team)[number] }) {
                     </a>
                   ))}
                 </div>
-                <a href="#" className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-black" style={{ background: member.color, boxShadow: `0 0 20px ${member.color}88` }}>
+                <a href="#" className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-navy" style={{ background: member.color, boxShadow: `0 0 20px ${member.color}88` }}>
                   Connect
                 </a>
               </div>

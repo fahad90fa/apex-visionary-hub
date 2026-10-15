@@ -19,18 +19,18 @@ export const Route = createFileRoute("/vision")({
 });
 
 const pillars = [
-  { Icon: GraduationCap, title: "Education Excellence", text: "Institutional-grade curriculum built by traders who've sat the desk.", color: "var(--neon-blue)" },
-  { Icon: Users, title: "Community & Support", text: "A global circle of serious traders, mentors, and accountability partners.", color: "var(--neon-green)" },
-  { Icon: Briefcase, title: "Real-World Application", text: "Live execution, prop firm pathways, and real capital — not theory.", color: "var(--neon-purple)" },
+  { Icon: GraduationCap, title: "Education Excellence", text: "Institutional-grade curriculum built by traders who've sat the desk.", color: "var(--gold)" },
+  { Icon: Users, title: "Community & Support", text: "A global circle of serious traders, mentors, and accountability partners.", color: "var(--gold-light)" },
+  { Icon: Briefcase, title: "Real-World Application", text: "Live execution, prop firm pathways, and real capital — not theory.", color: "var(--silver)" },
   { Icon: Trophy, title: "Financial Freedom", text: "Independence built on discipline, edge, and consistent profitable habits.", color: "var(--gold)" },
 ];
 
 const milestones = [
-  { year: "2019", title: "Academy Founded", text: "Apex launches with 12 students in a private mentorship pilot.", color: "var(--neon-blue)" },
-  { year: "2021", title: "First 500 Students", text: "The first thousand traders complete the core program.", color: "var(--neon-green)" },
-  { year: "2023", title: "International Expansion", text: "Mentors and students across 28 countries.", color: "var(--neon-purple)" },
+  { year: "2019", title: "Academy Founded", text: "Apex launches with 12 students in a private mentorship pilot.", color: "var(--gold)" },
+  { year: "2021", title: "First 500 Students", text: "The first thousand traders complete the core program.", color: "var(--gold-light)" },
+  { year: "2023", title: "International Expansion", text: "Mentors and students across 28 countries.", color: "var(--silver)" },
   { year: "2025", title: "1,000+ Traders Trained", text: "Crossing the milestone with a 95% retention rate.", color: "var(--gold)" },
-  { year: "Next", title: "The Future", text: "AI co-pilots, prop desk launches, and a global trader pipeline.", color: "var(--neon-blue)" },
+  { year: "Next", title: "The Future", text: "AI co-pilots, prop desk launches, and a global trader pipeline.", color: "var(--gold)" },
 ];
 
 function VisionPage() {
@@ -66,23 +66,23 @@ function VisionPage() {
 
           <Reveal delay={150}>
             <div className="relative mx-auto aspect-square w-full max-w-md">
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(0,212,255,0.25),transparent_60%)] blur-2xl" />
-              <div className="absolute inset-0 animate-spin-slow rounded-full border border-neon-blue/30" />
-              <div className="absolute inset-4 animate-spin-slow rounded-full border border-dashed border-neon-purple/30" style={{ animationDirection: "reverse", animationDuration: "40s" }} />
-              <div className="absolute inset-10 rounded-full border border-neon-blue/40 bg-[radial-gradient(circle_at_30%_30%,rgba(0,212,255,0.4),rgba(0,0,0,0.9))] shadow-[inset_0_0_60px_rgba(0,212,255,0.4),0_0_80px_rgba(0,212,255,0.4)]">
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(212,168,76,0.25),transparent_60%)] blur-2xl" />
+              <div className="absolute inset-0 animate-spin-slow rounded-full border border-gold/30" />
+              <div className="absolute inset-4 animate-spin-slow rounded-full border border-dashed border-silver/30" style={{ animationDirection: "reverse", animationDuration: "40s" }} />
+              <div className="absolute inset-10 rounded-full border border-gold/40 bg-[radial-gradient(circle_at_30%_30%,rgba(212,168,76,0.4),rgba(0,0,0,0.9))] shadow-[inset_0_0_60px_rgba(212,168,76,0.4),0_0_80px_rgba(212,168,76,0.4)]">
                 <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full opacity-60">
                   {Array.from({ length: 8 }).map((_, i) => (
-                    <ellipse key={`h${i}`} cx="100" cy="100" rx="92" ry={92 - i * 11} fill="none" stroke="rgba(0,212,255,0.35)" strokeWidth="0.4" />
+                    <ellipse key={`h${i}`} cx="100" cy="100" rx="92" ry={92 - i * 11} fill="none" stroke="rgba(212,168,76,0.35)" strokeWidth="0.4" />
                   ))}
                   {Array.from({ length: 12 }).map((_, i) => (
-                    <ellipse key={`v${i}`} cx="100" cy="100" rx={92 - Math.abs(i - 6) * 14} ry="92" fill="none" stroke="rgba(0,212,255,0.25)" strokeWidth="0.4" />
+                    <ellipse key={`v${i}`} cx="100" cy="100" rx={92 - Math.abs(i - 6) * 14} ry="92" fill="none" stroke="rgba(212,168,76,0.25)" strokeWidth="0.4" />
                   ))}
                 </svg>
                 {[
                   { x: "30%", y: "38%" }, { x: "55%", y: "30%" }, { x: "70%", y: "55%" }, { x: "40%", y: "65%" }, { x: "60%", y: "70%" }, { x: "25%", y: "55%" },
                 ].map((p, i) => (
-                  <span key={i} className="absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-green shadow-[0_0_12px_#00ff88]" style={{ left: p.x, top: p.y }}>
-                    <span className="absolute inset-0 rounded-full bg-neon-green" style={{ animation: `pulse-ring 2.4s ease-out infinite ${i * 0.4}s` }} />
+                  <span key={i} className="absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-light shadow-[0_0_12px_#f0d080]" style={{ left: p.x, top: p.y }}>
+                    <span className="absolute inset-0 rounded-full bg-gold-light" style={{ animation: `pulse-ring 2.4s ease-out infinite ${i * 0.4}s` }} />
                   </span>
                 ))}
               </div>
@@ -97,7 +97,7 @@ function VisionPage() {
           <SectionTitle eyebrow="Pillars" title={<>The Four <span className="text-gradient">Pillars</span></>} subtitle="The foundations of every trader we build." />
 
           <div className="relative mt-16">
-            <div className="absolute left-0 right-0 top-12 hidden h-px bg-gradient-to-r from-transparent via-neon-blue/40 to-transparent lg:block" />
+            <div className="absolute left-0 right-0 top-12 hidden h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent lg:block" />
             <div className="grid gap-8 lg:grid-cols-4">
               {pillars.map((p, i) => (
                 <Reveal key={p.title} delay={i * 100}>
@@ -107,7 +107,7 @@ function VisionPage() {
                       style={{ borderColor: p.color, background: `${p.color}15`, boxShadow: `0 0 28px ${p.color}55` }}
                     >
                       <p.Icon size={32} style={{ color: p.color }} />
-                      <span className="absolute -top-3 -right-3 grid h-9 w-9 place-items-center rounded-full bg-black font-display text-sm font-black" style={{ color: p.color, border: `1px solid ${p.color}` }}>
+                      <span className="absolute -top-3 -right-3 grid h-9 w-9 place-items-center rounded-full bg-navy-deep font-display text-sm font-black" style={{ color: p.color, border: `1px solid ${p.color}` }}>
                         0{i + 1}
                       </span>
                     </div>
@@ -127,7 +127,7 @@ function VisionPage() {
           <SectionTitle eyebrow="Roadmap" title={<>Our <span className="text-gradient">Journey & Milestones</span></>} />
 
           <div className="relative mt-16">
-            <div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-neon-blue/60 via-neon-purple/40 to-transparent shadow-[0_0_10px_#00d4ff]" />
+            <div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-gold/60 via-silver/40 to-transparent shadow-[0_0_10px_#d4a84c]" />
             <ul className="space-y-10">
               {milestones.map((m, i) => (
                 <li key={m.year}>

@@ -162,7 +162,7 @@ function AdminPage() {
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           {mode === "loading" && (
             <div className="glass grid place-items-center rounded-3xl p-16">
-              <Loader2 className="animate-spin text-neon-blue" />
+              <Loader2 className="animate-spin text-gold" />
             </div>
           )}
 
@@ -203,8 +203,8 @@ function AdminPage() {
 
           {mode === "admin" && (
             <>
-              <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-neon-green/20 bg-neon-green/5 p-5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2 font-sub text-sm text-neon-green">
+              <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-gold-light/20 bg-gold-light/5 p-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-2 font-sub text-sm text-gold-light">
                   <Shield size={16} />
                   <span>Authenticated as administrator</span>
                 </div>
@@ -217,7 +217,7 @@ function AdminPage() {
                   </Link>
                   <button
                     onClick={onLogout}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 font-sub text-xs uppercase tracking-[0.18em] text-white hover:bg-white/10"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-navy-deep/40 px-4 py-2 font-sub text-xs uppercase tracking-[0.18em] text-white hover:bg-white/10"
                   >
                     <LogOut size={12} /> Sign Out
                   </button>
@@ -230,7 +230,7 @@ function AdminPage() {
                   <div className="grid gap-4">
                     {FIELDS.filter((f) => f.group === group).map((f) => (
                       <label key={f.key} className="block">
-                        <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-neon-blue">
+                        <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
                           {f.label}
                         </span>
                         {f.key === "contact_address" || f.type === "url" ? (
@@ -241,7 +241,7 @@ function AdminPage() {
                               setDirty(true);
                             }}
                             rows={f.type === "url" ? 2 : 2}
-                            className="w-full resize-none rounded-lg border border-white/10 bg-black/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-neon-blue/60"
+                            className="w-full resize-none rounded-lg border border-white/10 bg-navy-deep/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-gold/60"
                           />
                         ) : (
                           <input
@@ -251,7 +251,7 @@ function AdminPage() {
                               setContent((c) => ({ ...c, [f.key]: e.target.value }));
                               setDirty(true);
                             }}
-                            className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-neon-blue/60"
+                            className="w-full rounded-lg border border-white/10 bg-navy-deep/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-gold/60"
                           />
                         )}
                       </label>
@@ -266,10 +266,10 @@ function AdminPage() {
                 </div>
               )}
 
-              <div className="sticky bottom-4 flex items-center justify-between rounded-2xl border border-neon-blue/30 bg-black/80 px-5 py-3 backdrop-blur">
+              <div className="sticky bottom-4 flex items-center justify-between rounded-2xl border border-gold/30 bg-navy-deep/80 px-5 py-3 backdrop-blur">
                 <div className="font-sub text-xs text-white/70">
                   {savedFlash ? (
-                    <span className="inline-flex items-center gap-1.5 text-neon-green">
+                    <span className="inline-flex items-center gap-1.5 text-gold-light">
                       <CheckCircle2 size={14} /> Saved
                     </span>
                   ) : dirty ? (
@@ -281,7 +281,7 @@ function AdminPage() {
                 <button
                   onClick={onSave}
                   disabled={busy || !dirty}
-                  className="inline-flex items-center gap-2 rounded-lg border border-neon-blue bg-neon-blue/15 px-5 py-2 font-sub text-sm font-bold uppercase tracking-wider text-neon-blue transition-all hover:bg-neon-blue/25 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="inline-flex items-center gap-2 rounded-lg border border-gold bg-gold/15 px-5 py-2 font-sub text-sm font-bold uppercase tracking-wider text-gold transition-all hover:bg-gold/25 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {busy ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
                   Save Changes
@@ -311,8 +311,8 @@ function AuthCard(props: {
   return (
     <div className="glass mx-auto max-w-md rounded-3xl p-8">
       <div className="mb-6 flex items-center gap-3">
-        <div className="grid h-12 w-12 place-items-center rounded-xl border border-neon-blue/40 bg-neon-blue/10 shadow-[0_0_24px_rgba(0,212,255,0.35)]">
-          <Lock className="text-neon-blue" size={20} />
+        <div className="grid h-12 w-12 place-items-center rounded-xl border border-gold/40 bg-gold/10 shadow-[0_0_24px_rgba(212,168,76,0.35)]">
+          <Lock className="text-gold" size={20} />
         </div>
         <div>
           <h2 className="font-display text-lg font-bold text-white">{props.title}</h2>
@@ -321,18 +321,18 @@ function AuthCard(props: {
       </div>
       <form onSubmit={props.onSubmit} className="space-y-4">
         <label className="block">
-          <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-neon-blue">Email</span>
+          <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-gold">Email</span>
           <input
             type="email"
             required
             autoComplete="email"
             value={props.email}
             onChange={(e) => props.onEmail(e.target.value)}
-            className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-neon-blue/60"
+            className="w-full rounded-lg border border-white/10 bg-navy-deep/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-gold/60"
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-neon-blue">Password</span>
+          <span className="mb-1.5 block font-sub text-[11px] font-bold uppercase tracking-[0.2em] text-gold">Password</span>
           <input
             type="password"
             required
@@ -340,7 +340,7 @@ function AuthCard(props: {
             autoComplete={props.cta === "Create Admin" ? "new-password" : "current-password"}
             value={props.password}
             onChange={(e) => props.onPassword(e.target.value)}
-            className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-neon-blue/60"
+            className="w-full rounded-lg border border-white/10 bg-navy-deep/40 px-3 py-2 font-sub text-sm text-white outline-none focus:border-gold/60"
           />
         </label>
         {props.error && (
@@ -351,7 +351,7 @@ function AuthCard(props: {
         <button
           type="submit"
           disabled={props.busy}
-          className="w-full rounded-lg border border-neon-blue bg-neon-blue/15 px-5 py-2.5 font-sub text-sm font-bold uppercase tracking-wider text-neon-blue transition-all hover:bg-neon-blue/25 disabled:opacity-40"
+          className="w-full rounded-lg border border-gold bg-gold/15 px-5 py-2.5 font-sub text-sm font-bold uppercase tracking-wider text-gold transition-all hover:bg-gold/25 disabled:opacity-40"
         >
           {props.busy ? "Please wait…" : props.cta}
         </button>

@@ -58,7 +58,7 @@ function AdminContactPage() {
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <Link
               to="/admin"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/5"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-navy-deep/40 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/5"
             >
               <ArrowLeft size={16} /> Back to Admin
             </Link>
@@ -67,7 +67,7 @@ function AdminContactPage() {
 
           {status === "loading" && (
             <div className="glass grid place-items-center rounded-3xl p-16">
-              <Loader2 className="animate-spin text-neon-blue" />
+              <Loader2 className="animate-spin text-gold" />
             </div>
           )}
 
@@ -101,8 +101,8 @@ function AdminContactPage() {
                           </span>
                         </div>
                       </div>
-                      <div className="mt-3 rounded-2xl border border-white/10 bg-black/40 p-4 text-sm leading-7 text-white/85">
-                        <p className="inline-flex items-start gap-2 text-neon-blue"><MessageSquare size={16} /> Message</p>
+                      <div className="mt-3 rounded-2xl border border-white/10 bg-navy-deep/40 p-4 text-sm leading-7 text-white/85">
+                        <p className="inline-flex items-start gap-2 text-gold"><MessageSquare size={16} /> Message</p>
                         <p className="mt-3 whitespace-pre-line">{message.message}</p>
                       </div>
                     </div>

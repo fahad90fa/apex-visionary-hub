@@ -49,7 +49,7 @@ function NewsPage() {
 
 function LoadingState() {
   return (
-    <div className="flex items-center justify-center py-24 text-neon-blue">
+    <div className="flex items-center justify-center py-24 text-gold">
       <Loader2 className="h-8 w-8 animate-spin" />
       <span className="ml-3 font-sub text-sm uppercase tracking-[0.25em]">Loading market data…</span>
     </div>
@@ -67,7 +67,7 @@ function NewsContent() {
       <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-lg bg-neon-green/10 text-neon-green">
+            <div className="grid h-10 w-10 place-items-center rounded-lg bg-gold-light/10 text-gold-light">
               <Globe className="h-5 w-5" />
             </div>
             <div>
@@ -80,7 +80,7 @@ function NewsContent() {
           <button
             onClick={() => refetch()}
             disabled={isFetching}
-            className="inline-flex items-center gap-2 rounded-full border border-neon-blue/40 bg-neon-blue/5 px-4 py-2 font-sub text-xs font-bold uppercase tracking-[0.2em] text-neon-blue hover:bg-neon-blue/10 disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/5 px-4 py-2 font-sub text-xs font-bold uppercase tracking-[0.2em] text-gold hover:bg-gold/10 disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} /> Refresh
           </button>
@@ -88,11 +88,11 @@ function NewsContent() {
         {data.rates && (
           <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
             {Object.entries(data.rates.rates).map(([code, rate]) => (
-              <div key={code} className="rounded-xl border border-white/5 bg-black/40 p-3 text-center">
+              <div key={code} className="rounded-xl border border-white/5 bg-navy-deep/40 p-3 text-center">
                 <div className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
                   {data.rates!.base}/{code}
                 </div>
-                <div className="mt-1 font-display text-lg font-bold text-neon-blue">{rate.toFixed(4)}</div>
+                <div className="mt-1 font-display text-lg font-bold text-gold">{rate.toFixed(4)}</div>
               </div>
             ))}
           </div>
@@ -164,7 +164,7 @@ function NewsSection({
         </p>
       ) : (
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl">
-          <div className="grid grid-cols-[110px_60px_1fr_80px_80px] gap-3 border-b border-white/5 bg-black/40 px-4 py-3 font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground sm:grid-cols-[160px_80px_1fr_100px_100px]">
+          <div className="grid grid-cols-[110px_60px_1fr_80px_80px] gap-3 border-b border-white/5 bg-navy-deep/40 px-4 py-3 font-sub text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground sm:grid-cols-[160px_80px_1fr_100px_100px]">
             <span>When</span><span>CCY</span><span>Event</span><span className="text-right">Forecast</span><span className="text-right">Previous</span>
           </div>
           {items.map((n, i) => (
@@ -180,7 +180,7 @@ function NewsSection({
                 {n.country}
               </span>
               <span className="truncate font-sub text-sm text-white">{n.title}</span>
-              <span className="text-right font-display text-sm text-neon-blue">{n.forecast || "—"}</span>
+              <span className="text-right font-display text-sm text-gold">{n.forecast || "—"}</span>
               <span className="text-right font-display text-sm text-muted-foreground">{n.previous || "—"}</span>
             </div>
           ))}
