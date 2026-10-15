@@ -1,8 +1,8 @@
 import type { SVGProps } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
-import { Reveal, SectionTitle } from "./index";
+import { Reveal } from "./index";
 
 const TikTokIcon = ({ size = 24, color = "#FE2C55" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,11 +36,6 @@ const platforms = [
   { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
 ];
 
-const feed = [
-  { platform: "Instagram", Icon: Instagram, color: "#E1306C", text: "EUR/USD breakdown from this morning's live session. Clean rejection at supply, 1:4 RR runner closed.", likes: 1248, comments: 89, shares: 42 },
-  { platform: "Telegram", Icon: Send, color: "#0088cc", text: "Today's signal pack is live in the channel. 3 setups across FX majors with full risk plans.", likes: 642, comments: 51, shares: 88 },
-  { platform: "TikTok", Icon: TikTokIcon, color: "#FE2C55", text: "New 60-second breakdown: how pros read order flow before a breakout. Watch now.", likes: 3420, comments: 178, shares: 312 },
-];
 
 function SocialPage() {
   return (
@@ -78,40 +73,6 @@ function SocialPage() {
                     Visit Now <ArrowUpRight size={12} />
                   </span>
                 </a>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative py-20">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionTitle eyebrow="Community" title={<>Latest From Our <span className="text-gradient">Community</span></>} />
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {feed.map((f, i) => (
-              <Reveal key={f.platform} delay={i * 110}>
-                <article
-                  className="group h-full overflow-hidden rounded-2xl border border-white/5 bg-[rgba(5,15,40,0.6)] backdrop-blur-xl transition-all hover:-translate-y-1.5"
-                  style={{ ["--c" as string]: f.color }}
-                  onMouseEnter={e => (e.currentTarget.style.boxShadow = `0 24px 60px ${f.color}40, 0 0 0 1px ${f.color}66`)}
-                  onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <div className="absolute inset-0 animate-shimmer" style={{ background: `linear-gradient(90deg, transparent, ${f.color}33, transparent)`, backgroundSize: "200% 100%" }} />
-                    <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 30% 30%, ${f.color}55, transparent 60%)` }} />
-                    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border bg-navy-deep/60 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur" style={{ borderColor: `${f.color}66`, color: f.color }}>
-                      <f.Icon size={12} /> {f.platform}
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <p className="font-sub text-sm leading-relaxed text-white/90">{f.text}</p>
-                    <div className="mt-5 flex items-center justify-between border-t border-white/5 pt-4 font-sub text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1.5"><Heart size={13} /> {f.likes.toLocaleString()}</span>
-                      <span className="flex items-center gap-1.5"><MessageSquare size={13} /> {f.comments}</span>
-                      <span className="flex items-center gap-1.5"><Share2 size={13} /> {f.shares}</span>
-                    </div>
-                  </div>
-                </article>
               </Reveal>
             ))}
           </div>
