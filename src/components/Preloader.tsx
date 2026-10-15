@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import unnamedPic from "../pics/unnamed.jpg";
+import logo from "../pics/logo.png";
 
 export function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -35,16 +35,11 @@ export function Preloader() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.18),transparent_60%)]" />
 
       <div className="relative flex flex-col items-center gap-8 px-6 text-center">
-        <div className="flex items-center gap-3">
-          <img
-            src={unnamedPic}
-            alt="Apex Forex logo"
-            className="relative h-24 w-24 animate-pulse-glow rounded-xl object-cover"
-          />
-          <div className="font-display text-2xl sm:text-3xl font-black tracking-[0.2em] text-gradient">
-            APEX FOREX
-          </div>
-        </div>
+        <img
+          src={logo}
+          alt="Apex Forex Academy logo"
+          className="relative h-40 w-auto animate-pulse-glow rounded-2xl object-contain sm:h-48"
+        />
 
         <svg width="280" height="60" viewBox="0 0 280 60" className="opacity-80">
           {Array.from({ length: 14 }).map((_, i) => {
