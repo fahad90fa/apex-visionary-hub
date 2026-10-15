@@ -23,6 +23,9 @@ function TVMiniXAUUSD() {
       height: "100%",
       locale: "en",
       colorTheme: "dark",
+      trendLineColor: "#d4a84c",
+      underLineColor: "rgba(212,168,76,0.3)",
+      underLineBottomColor: "rgba(212,168,76,0)",
       isTransparent: true,
       autosize: true,
       largeChartUrl: "https://www.tradingview.com/chart/?symbol=OANDA%3AXAUUSD",
@@ -81,7 +84,7 @@ function Hero() {
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:px-8">
         <div className="text-center lg:text-left">
-          <span className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.25em] text-gold shadow-[0_0_24px_rgba(212,168,76,0.25)]">
+          <span className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.15em] text-gold shadow-[0_0_24px_rgba(212,168,76,0.25)]">
             🚀 The Future of Forex Education
           </span>
 
@@ -129,7 +132,7 @@ function Hero() {
           <div className="relative glass-strong rounded-3xl p-5 animate-float">
             <div className="flex items-center justify-between border-b border-white/5 pb-3">
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#2f4fb5]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#d4a84c]" />
                 <span className="font-display text-xs font-bold tracking-[0.2em]">XAU/USD</span>
               </div>
               <span className="font-sub text-xs text-gold">LIVE GOLD</span>
@@ -213,7 +216,7 @@ function Stats() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="glass relative overflow-hidden rounded-3xl p-10 lg:p-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,76,0.12),transparent_60%)]" />
-          <div className="relative grid gap-10 sm:grid-cols-3 sm:divide-x sm:divide-white/5">
+          <div className="relative grid gap-10 lg:grid-cols-3 lg:divide-x lg:divide-white/5">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 120}>
                 <div className="px-2 text-center">
@@ -349,7 +352,7 @@ export function SectionTitle({ eyebrow, title, subtitle }: { eyebrow?: string; t
   return (
     <div className="text-center">
       {eyebrow && (
-        <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.25em] text-gold">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.15em] text-gold">
           {eyebrow}
         </span>
       )}

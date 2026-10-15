@@ -106,7 +106,7 @@ function LocationPage() {
                   </defs>
                   <rect width="400" height="300" fill="url(#streets)" />
                   <path d="M20,180 Q120,140 180,160 T380,140" stroke="rgba(212,168,76,0.5)" strokeWidth="2" fill="none" />
-                  <path d="M0,80 L140,90 L220,60 L400,90" stroke="rgba(47,79,181,0.4)" strokeWidth="1.5" fill="none" />
+                  <path d="M0,80 L140,90 L220,60 L400,90" stroke="rgba(230,235,245,0.3)" strokeWidth="1.5" fill="none" />
                   <path d="M60,260 L180,230 L260,250 L380,220" stroke="rgba(240,208,128,0.35)" strokeWidth="1.5" fill="none" />
                   <circle cx="80" cy="120" r="2" fill="#b4bdd6" />
                   <circle cx="320" cy="200" r="2" fill="#b4bdd6" />

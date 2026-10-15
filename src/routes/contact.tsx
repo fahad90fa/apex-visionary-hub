@@ -144,7 +144,7 @@ function ContactForm() {
       </button>
 
       {state === "sent" && (
-        <p className="mt-4 text-center text-sm text-emerald-300">Thanks! Your message has been received and will appear in the admin inbox.</p>
+        <p className="mt-4 text-center text-sm text-gold-light">Thanks! Your message has been received and will appear in the admin inbox.</p>
       )}
       {state === "error" && error && (
         <p className="mt-4 text-center text-sm text-red-300">{error}</p>
