@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Play, Shield, Globe, Cpu, LineChart, Quote, Star } from "lucide-react";
 import { ParticleField } from "../components/ParticleField";
 import { CandlestickBg } from "../components/CandlestickBg";
-import teamVideo from "../pics/team.mp4";
+import showcaseVideo from "../pics/apex-showcase.mp4";
+import showcasePoster from "../pics/apex-showcase-poster.jpg";
 
 function TVMiniXAUUSD() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -272,15 +273,21 @@ function VideoShowcase() {
         <Reveal>
           <div className="relative mt-14">
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-gold via-silver to-gold opacity-50 blur-xl" />
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-gold/40 bg-navy-deep max-w-full">
+            {/* Portrait source video: shown at its native proportions (never cropped or upscaled) inside a
+                horizontal 16:9 frame on larger screens, and in a portrait frame on phones. */}
+            <div className="relative aspect-[9/16] max-w-full overflow-hidden rounded-2xl border border-gold/40 bg-navy sm:aspect-[16/9]">
+              <div className="absolute inset-0 grid-bg opacity-40" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,76,0.18),transparent_60%)]" />
               <video
-                src={teamVideo}
-                className="h-full w-full object-cover bg-navy-deep"
+                src={showcaseVideo}
+                poster={showcasePoster}
+                className="relative h-full w-full object-contain"
                 autoPlay
                 muted
                 loop
                 playsInline
                 controls
+                preload="metadata"
               />
             </div>
           </div>
