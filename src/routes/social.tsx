@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Send, Facebook, MessageCircle, Youtube, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, Heart, MessageSquare, Share2, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { Reveal, SectionTitle } from "./index";
 
@@ -17,10 +17,10 @@ export const Route = createFileRoute("/social")({
   head: () => ({
     meta: [
       { title: "Follow Us on Social Media — Apex Forex Academy" },
-      { name: "description", content: "Follow Apex Forex Academy on Instagram, YouTube, TikTok, Telegram, Facebook & WhatsApp for daily Forex signals, market analysis & trading tips." },
-      { name: "keywords", content: "Apex Forex Instagram, forex signals Telegram, forex TikTok, forex YouTube channel, forex WhatsApp group Pakistan" },
+      { name: "description", content: "Follow Apex Forex Academy on WhatsApp, Instagram, Facebook, TikTok & Telegram for daily Forex signals, market analysis & trading tips." },
+      { name: "keywords", content: "Apex Forex Instagram, forex signals Telegram, forex TikTok, forex WhatsApp group Pakistan" },
       { property: "og:title", content: "Follow Apex Forex Academy on Social Media" },
-      { property: "og:description", content: "Join our community on Instagram, YouTube, TikTok, Telegram, Facebook and WhatsApp." },
+      { property: "og:description", content: "Join our community on WhatsApp, Instagram, Facebook, TikTok and Telegram." },
       { property: "og:url", content: "https://www.apexacademypk.com/social" },
     ],
     links: [{ rel: "canonical", href: "https://www.apexacademypk.com/social" }],
@@ -29,12 +29,11 @@ export const Route = createFileRoute("/social")({
 });
 
 const platforms = [
-  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy?igsh=MTNyeW5jcThqa29u" },
-  { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
-  { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55", href: "https://www.tiktok.com/@apex.forex.academy?_r=1&_t=ZS-97cK7bAxcAL" },
-  { Icon: Youtube, label: "YouTube", sub: "Watch Our Videos", color: "#FF0000", href: "https://www.youtube.com/@apexforexacademy" },
-  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/share/1EniqmTA4D/?mibextid=wwXIfr" },
   { Icon: MessageCircle, label: "WhatsApp", sub: "Join Community", color: "#25D366", href: "https://wa.me/923166513780" },
+  { Icon: Instagram, label: "Instagram", sub: "@apexforexacademy", color: "#E1306C", href: "https://www.instagram.com/apexforexacademy?igsh=MTNyeW5jcThqa29u" },
+  { Icon: Facebook, label: "Facebook", sub: "Follow Our Page", color: "#1877F2", href: "https://www.facebook.com/share/1EniqmTA4D/?mibextid=wwXIfr" },
+  { Icon: TikTokIcon, label: "TikTok", sub: "Follow Our Clips", color: "#FE2C55", href: "https://www.tiktok.com/@apex.forex.academy?_r=1&_t=ZS-97cK7bAxcAL" },
+  { Icon: Send, label: "Telegram", sub: "Join Our Channel", color: "#0088cc", href: "https://t.me/apexforexacademy" },
 ];
 
 const feed = [

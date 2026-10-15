@@ -131,7 +131,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "https://www.instagram.com/apexforexacademy",
                 "https://t.me/apexforexacademy",
                 "https://www.tiktok.com/@apex.forex.academy",
-                "https://www.youtube.com/@apexforexacademy",
                 "https://www.facebook.com/share/1EniqmTA4D/",
                 "https://wa.me/923166513780",
               ],

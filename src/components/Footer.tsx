@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Send, Youtube, Facebook, MessageCircle, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Instagram, Send, Facebook, MessageCircle, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const socials = [
   { Icon: Instagram, label: "Instagram", color: "#E1306C" },
   { Icon: Send, label: "Telegram", color: "#0088cc" },
-  { Icon: Youtube, label: "YouTube", color: "#FF0000" },
   { Icon: Facebook, label: "Facebook", color: "#1877F2" },
   { Icon: MessageCircle, label: "WhatsApp", color: "#25D366" },
 ];
