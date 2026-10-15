@@ -10,8 +10,8 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/5 bg-black">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon-blue/50 to-transparent" />
+    <footer className="relative mt-32 border-t border-white/5 bg-navy-deep">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
       <div className="absolute inset-0 grid-bg opacity-20" />
 
       <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8">
@@ -61,11 +61,11 @@ export function Footer() {
           ]} />
 
           <div>
-            <h4 className="font-sub text-xs font-bold uppercase tracking-[0.22em] text-neon-blue">Contact Us</h4>
+            <h4 className="font-sub text-xs font-bold uppercase tracking-[0.22em] text-gold">Contact Us</h4>
             <ul className="mt-5 space-y-4 font-sub text-sm text-muted-foreground">
-              <li className="flex gap-3"><MapPin size={16} className="mt-0.5 shrink-0 text-neon-blue" /> Plot Number 44 45 Mumtaz Market Gujranwala , Pakistan</li>
-              <li className="flex gap-3"><Phone size={16} className="mt-0.5 shrink-0 text-neon-green" /> +92 3166513780</li>
-              <li className="flex gap-3"><Mail size={16} className="mt-0.5 shrink-0 text-neon-purple" /> apexforex0@gmail.com</li>
+              <li className="flex gap-3"><MapPin size={16} className="mt-0.5 shrink-0 text-gold" /> Plot Number 44 45 Mumtaz Market Gujranwala , Pakistan</li>
+              <li className="flex gap-3"><Phone size={16} className="mt-0.5 shrink-0 text-gold-light" /> +92 3166513780</li>
+              <li className="flex gap-3"><Mail size={16} className="mt-0.5 shrink-0 text-silver" /> apexforex0@gmail.com</li>
               <li className="flex gap-3"><Clock size={16} className="mt-0.5 shrink-0 text-gold" /> Mon – Fri : 11:00 AM – 9:00 PM</li>
             </ul>
           </div>
@@ -87,18 +87,18 @@ export function Footer() {
 function FooterCol({ title, items }: { title: string; items: { label: string; to?: string }[] }) {
   return (
     <div>
-      <h4 className="font-sub text-xs font-bold uppercase tracking-[0.22em] text-neon-blue">{title}</h4>
+      <h4 className="font-sub text-xs font-bold uppercase tracking-[0.22em] text-gold">{title}</h4>
       <ul className="mt-5 space-y-3 font-sub text-sm">
         {items.map(it => (
           <li key={it.label}>
             {it.to ? (
-              <Link to={it.to} className="group inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-neon-blue">
-                <span className="h-px w-0 bg-neon-blue transition-all group-hover:w-4" />
+              <Link to={it.to} className="group inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-gold">
+                <span className="h-px w-0 bg-gold transition-all group-hover:w-4" />
                 {it.label}
               </Link>
             ) : (
-              <span className="group inline-flex cursor-default items-center gap-2 text-muted-foreground transition-colors hover:text-neon-blue">
-                <span className="h-px w-0 bg-neon-blue transition-all group-hover:w-4" />
+              <span className="group inline-flex cursor-default items-center gap-2 text-muted-foreground transition-colors hover:text-gold">
+                <span className="h-px w-0 bg-gold transition-all group-hover:w-4" />
                 {it.label}
               </span>
             )}

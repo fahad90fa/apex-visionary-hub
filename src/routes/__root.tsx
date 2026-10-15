@@ -28,7 +28,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-neon-blue to-neon-green px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_24px_rgba(0,212,255,0.55)]"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-light px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-navy shadow-[0_0_24px_rgba(212,168,76,0.55)]"
           >
             Return Home
           </Link>
@@ -57,11 +57,11 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => { router.invalidate(); reset(); }}
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-neon-blue to-neon-green px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-black"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-light px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-navy"
           >
             Try again
           </button>
-          <a href="/" className="inline-flex items-center justify-center rounded-full border border-neon-blue/40 px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-neon-blue">
+          <a href="/" className="inline-flex items-center justify-center rounded-full border border-gold/40 px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.2em] text-gold">
             Go home
           </a>
         </div>
@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Apex Forex Academy" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { name: "googlebot", content: "index, follow" },
-      { name: "theme-color", content: "#00d4ff" },
+      { name: "theme-color", content: "#000d3c" },
       { property: "og:site_name", content: "Apex Forex Academy" },
       { property: "og:title", content: "Apex Forex Academy — #1 Forex Trading Academy in Pakistan" },
       { property: "og:description", content: "Learn Forex, Gold & crypto trading with Pakistan's elite mentors. Live sessions, daily signals & a global community." },
@@ -102,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap",
       },
     ],
     scripts: [

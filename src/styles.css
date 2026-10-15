@@ -11,9 +11,9 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
-  --font-display: "Orbitron", system-ui, sans-serif;
-  --font-sub: "Rajdhani", system-ui, sans-serif;
-  --font-body: "Exo 2", "Inter", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-sub: "Montserrat", system-ui, sans-serif;
+  --font-body: "Montserrat", "Inter", system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -35,12 +35,14 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-neon-blue: var(--neon-blue);
-  --color-neon-green: var(--neon-green);
-  --color-neon-purple: var(--neon-purple);
-  --color-neon-purple-dark: var(--neon-purple-dark);
   --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
   --color-gold-soft: var(--gold-soft);
+  --color-silver: var(--silver);
+  --color-royal: var(--royal);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
   --color-surface: var(--surface);
   --color-deep: var(--deep);
 }
@@ -48,51 +50,54 @@
 :root {
   --radius: 0.875rem;
 
-  --background: #000000;
+  /* Brand palette: deep navy, gold and white (matches the Instagram artwork and logo) */
+  --background: #02071e;
   --foreground: #ffffff;
-  --deep: #020818;
-  --surface: #050d24;
+  --navy: #000d3c;
+  --navy-deep: #02071e;
+  --deep: #000d3c;
+  --surface: #06143f;
 
-  --card: rgba(5, 15, 40, 0.7);
+  --card: rgba(3, 13, 48, 0.72);
   --card-foreground: #ffffff;
-  --popover: #050d24;
+  --popover: #06143f;
   --popover-foreground: #ffffff;
 
-  --primary: #00d4ff;
-  --primary-foreground: #000814;
-  --secondary: #0a1530;
+  --primary: #d4a84c;
+  --primary-foreground: #000d3c;
+  --secondary: #0a1a4a;
   --secondary-foreground: #ffffff;
-  --muted: #0a1530;
-  --muted-foreground: #a0b4c8;
-  --accent: #b66dff;
-  --accent-foreground: #ffffff;
+  --muted: #0a1a4a;
+  --muted-foreground: #b4bdd6;
+  --accent: #f0d080;
+  --accent-foreground: #000d3c;
   --destructive: #ff4d6d;
   --destructive-foreground: #ffffff;
 
-  --border: rgba(0, 212, 255, 0.15);
-  --input: rgba(0, 212, 255, 0.2);
-  --ring: #00d4ff;
+  --border: rgba(212, 168, 76, 0.18);
+  --input: rgba(212, 168, 76, 0.25);
+  --ring: #d4a84c;
 
-  --neon-blue: #00d4ff;
-  --neon-green: #00ff88;
-  --neon-purple: #b66dff;
-  --neon-purple-dark: #6a0dad;
-  --gold: #ffd700;
+  --gold: #d4a84c;
+  --gold-light: #f0d080;
+  --gold-deep: #a8832e;
   --gold-soft: #c9a84c;
+  --silver: #e6ebf5;
+  --royal: #2f4fb5;
 
-  --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #b66dff 100%);
-  --gradient-cta: linear-gradient(90deg, #00d4ff 0%, #00ff88 100%);
-  --gradient-text: linear-gradient(90deg, #00d4ff 0%, #ffd700 100%);
-  --gradient-border: linear-gradient(180deg, rgba(0,212,255,0.4), rgba(182,109,255,0.4));
+  --gradient-hero: linear-gradient(135deg, #d4a84c 0%, #f0d080 100%);
+  --gradient-cta: linear-gradient(90deg, #c9a24a 0%, #f0d080 100%);
+  --gradient-text: linear-gradient(90deg, #c9a24a 0%, #f3dc8e 50%, #d4a84c 100%);
+  --gradient-border: linear-gradient(180deg, rgba(212,168,76,0.4), rgba(47,79,181,0.4));
 
-  --shadow-neon: 0 0 10px #00d4ff, 0 0 25px #00d4ff, 0 0 50px rgba(0,212,255,0.3);
-  --shadow-neon-green: 0 0 10px #00ff88, 0 0 25px rgba(0,255,136,0.5);
-  --shadow-card: 0 8px 32px rgba(0, 212, 255, 0.1);
-  --shadow-lift: 0 20px 60px rgba(0, 212, 255, 0.3);
+  --shadow-neon: 0 0 10px #d4a84c, 0 0 25px #d4a84c, 0 0 50px rgba(212,168,76,0.3);
+  --shadow-neon-green: 0 0 10px #f0d080, 0 0 25px rgba(240,208,128,0.5);
+  --shadow-card: 0 8px 32px rgba(212, 168, 76, 0.1);
+  --shadow-lift: 0 20px 60px rgba(212, 168, 76, 0.3);
 }
 
 .dark {
-  --background: #000000;
+  --background: #02071e;
   --foreground: #ffffff;
 }
 
@@ -101,24 +106,24 @@
     border-color: var(--color-border);
   }
   html, body {
-    background-color: #000000;
+    background-color: #02071e;
     color: var(--foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
   body {
     background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(182,109,255,0.18), transparent 60%),
-      radial-gradient(900px 500px at -10% 30%, rgba(0,212,255,0.18), transparent 60%),
-      linear-gradient(180deg, #000000 0%, #020818 60%, #000000 100%);
+      radial-gradient(1200px 600px at 80% -10%, rgba(47,79,181,0.22), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(212,168,76,0.12), transparent 60%),
+      linear-gradient(180deg, #02071e 0%, #000d3c 55%, #02071e 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
   }
-  ::selection { background: rgba(0,212,255,0.35); color: #fff; }
+  ::selection { background: rgba(212,168,76,0.4); color: #fff; }
 }
 
 @utility text-gradient {
@@ -134,33 +139,33 @@
   color: transparent;
 }
 @utility glass {
-  background: rgba(5, 15, 40, 0.6);
+  background: rgba(3, 13, 48, 0.6);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(212, 168, 76, 0.18);
   border-radius: 18px;
   box-shadow: var(--shadow-card);
 }
 @utility glass-strong {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 13, 60, 0.7);
   backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(212, 168, 76, 0.25);
 }
 @utility neon-glow {
   box-shadow: var(--shadow-neon);
 }
 @utility text-glow {
-  text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px rgba(0, 212, 255, 0.5);
+  text-shadow: 0 0 10px #d4a84c, 0 0 20px #d4a84c, 0 0 40px rgba(212, 168, 76, 0.5);
 }
 @utility text-glow-gold {
-  text-shadow: 0 0 10px #ffd700, 0 0 24px rgba(255,215,0,0.5);
+  text-shadow: 0 0 10px #f0d080, 0 0 24px rgba(240,208,128,0.5);
 }
 @utility hover-lift {
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s;
 }
 @utility grid-bg {
   background-image:
-    linear-gradient(rgba(0,212,255,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(212,168,76,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,168,76,0.07) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -169,8 +174,8 @@
   50% { transform: translateY(-12px); }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(0,212,255,0.6), 0 0 30px rgba(0,212,255,0.3); }
-  50% { box-shadow: 0 0 20px rgba(0,212,255,1), 0 0 60px rgba(0,212,255,0.6); }
+  0%, 100% { box-shadow: 0 0 10px rgba(212,168,76,0.6), 0 0 30px rgba(212,168,76,0.3); }
+  50% { box-shadow: 0 0 20px rgba(212,168,76,1), 0 0 60px rgba(212,168,76,0.6); }
 }
 @keyframes pulse-ring {
   0% { transform: scale(1); opacity: 0.8; }
@@ -202,7 +207,7 @@
 @utility animate-ticker { animation: ticker 40s linear infinite; }
 @utility animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.23,1,0.32,1) both; }
 @utility animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212,168,76,0.3), transparent);
   background-size: 200% 100%;
   animation: shimmer 2.2s linear infinite;
 }

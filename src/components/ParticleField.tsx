@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function ParticleField({ density = 90, color = "0, 212, 255" }: { density?: number; color?: string }) {
+export function ParticleField({ density = 90, color = "212, 168, 76" }: { density?: number; color?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

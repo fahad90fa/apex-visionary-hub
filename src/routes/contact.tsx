@@ -30,7 +30,7 @@ function ContactPage() {
         {symbols.map((s, i) => (
           <span
             key={s}
-            className="absolute font-display text-7xl font-black tracking-[0.2em] text-neon-blue/[0.05] sm:text-9xl"
+            className="absolute font-display text-7xl font-black tracking-[0.2em] text-gold/[0.05] sm:text-9xl"
             style={{ left: `${(i * 41) % 80 + 5}%`, top: `${(i * 53) % 80 + 5}%`, transform: `rotate(${i * 11 - 25}deg)`, animation: `float-y ${12 + i}s ease-in-out infinite ${i}s` }}
           >
             {s}
@@ -100,7 +100,7 @@ function ContactForm() {
         label="Full Name"
         placeholder="Enter your full name"
         type="text"
-        focusColor="var(--neon-blue)"
+        focusColor="var(--gold)"
         value={form.full_name}
         onChange={value => setForm(prev => ({ ...prev, full_name: value }))}
       />
@@ -109,7 +109,7 @@ function ContactForm() {
         label="Email Address"
         placeholder="Enter your email address"
         type="email"
-        focusColor="var(--neon-green)"
+        focusColor="var(--gold-light)"
         value={form.email}
         onChange={value => setForm(prev => ({ ...prev, email: value }))}
       />
@@ -118,7 +118,7 @@ function ContactForm() {
         label="Phone Number"
         placeholder="Enter your phone number"
         type="tel"
-        focusColor="var(--neon-purple)"
+        focusColor="var(--silver)"
         value={form.phone}
         onChange={value => setForm(prev => ({ ...prev, phone: value }))}
       />
@@ -135,7 +135,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="group mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-neon-blue to-neon-green px-6 py-4 font-sub text-sm font-bold uppercase tracking-[0.25em] text-black shadow-[0_0_30px_rgba(0,212,255,0.55)] transition-all hover:scale-[1.01] disabled:opacity-90"
+        className="group mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold to-gold-light px-6 py-4 font-sub text-sm font-bold uppercase tracking-[0.25em] text-navy shadow-[0_0_30px_rgba(212,168,76,0.55)] transition-all hover:scale-[1.01] disabled:opacity-90"
       >
         {state === "idle" && <>Send Message <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></>}
         {state === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending</>}
@@ -163,13 +163,13 @@ function Field({ Icon, label, placeholder, type, focusColor, value, onChange }: 
   return (
     <div className="mb-5">
       <div
-        className="relative rounded-xl border bg-black/30 transition-all"
+        className="relative rounded-xl border bg-navy-deep/30 transition-all"
         style={{
           borderColor: focused ? focusColor : "rgba(255,255,255,0.08)",
           boxShadow: focused ? `0 0 22px ${focusColor}55` : undefined,
         }}
       >
-        <Icon size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 transition-colors" style={{ color: focused ? focusColor : "#a0b4c8" }} />
+        <Icon size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 transition-colors" style={{ color: focused ? focusColor : "#b4bdd6" }} />
         <label
           className="pointer-events-none absolute left-11 font-sub transition-all"
           style={{
@@ -178,7 +178,7 @@ function Field({ Icon, label, placeholder, type, focusColor, value, onChange }: 
             fontSize: floated ? "11px" : "14px",
             letterSpacing: floated ? "0.2em" : "0",
             textTransform: floated ? "uppercase" : "none",
-            color: focused ? focusColor : "#a0b4c8",
+            color: focused ? focusColor : "#b4bdd6",
             fontWeight: floated ? 700 : 400,
           }}
         >

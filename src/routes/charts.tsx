@@ -67,16 +67,16 @@ function TVChart({ symbol, interval }: { symbol: string; interval: string }) {
           {[0, 1, 2, 3].map((line) => (
             <line key={line} x1={0} y1={20 + line * 35} x2={width} y2={20 + line * 35} stroke="rgba(255,255,255,0.06)" strokeDasharray="4 4" />
           ))}
-          <path d={path} fill="none" stroke="#00d4ff" strokeWidth={3} strokeLinecap="round" />
+          <path d={path} fill="none" stroke="#d4a84c" strokeWidth={3} strokeLinecap="round" />
           <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#gradient)" opacity={0.16} />
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#00d4ff" />
+              <stop offset="0%" stopColor="#d4a84c" />
               <stop offset="100%" stopColor="#071227" />
             </linearGradient>
           </defs>
         </svg>
-        <div className="mt-4 rounded-lg border border-neon-blue/20 bg-neon-blue/10 px-3 py-2 text-sm text-neon-blue">
+        <div className="mt-4 rounded-lg border border-gold/20 bg-gold/10 px-3 py-2 text-sm text-gold">
           Market data is currently unavailable. This preview is a local chart placeholder until live connectivity is restored.
         </div>
       </div>
@@ -99,7 +99,7 @@ function ChartsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur">
             <div>
-              <p className="font-sub text-xs uppercase tracking-[0.25em] text-neon-blue">Interval</p>
+              <p className="font-sub text-xs uppercase tracking-[0.25em] text-gold">Interval</p>
               <p className="font-display text-sm text-white/70">Apply timeframe to all charts</p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -111,8 +111,8 @@ function ChartsPage() {
                     onClick={() => setInterval(i.value)}
                     className={`rounded-lg border px-3 py-1.5 font-sub text-xs font-bold uppercase tracking-wider transition-all ${
                       active
-                        ? "border-neon-blue bg-neon-blue/15 text-neon-blue shadow-[0_0_18px_rgba(0,212,255,0.45)]"
-                        : "border-white/10 bg-white/5 text-white/70 hover:border-neon-blue/40 hover:text-white"
+                        ? "border-gold bg-gold/15 text-gold shadow-[0_0_18px_rgba(212,168,76,0.45)]"
+                        : "border-white/10 bg-white/5 text-white/70 hover:border-gold/40 hover:text-white"
                     }`}
                   >
                     {i.label}
@@ -127,7 +127,7 @@ function ChartsPage() {
               <div key={c.symbol} className="glass overflow-hidden rounded-2xl border border-white/10 p-4 hover-lift">
                 <div className="mb-3 flex items-center justify-between">
                   <h3 className="font-display text-base font-bold tracking-wider text-white">{c.title}</h3>
-                  <span className="font-sub text-xs uppercase tracking-[0.2em] text-neon-green">● Live</span>
+                  <span className="font-sub text-xs uppercase tracking-[0.2em] text-gold-light">● Live</span>
                 </div>
                 <TVChart symbol={c.symbol} interval={interval} />
               </div>

@@ -35,15 +35,15 @@ export const Route = createFileRoute("/facilities")({
 });
 
 const services = [
-  { Icon: Monitor, title: "Live Trading Sessions", text: "Trade alongside our experts in real-time live market sessions every week.", color: "var(--neon-blue)" },
-  { Icon: UserCheck, title: "1-on-1 Mentorship", text: "Personalized coaching sessions tailored to your specific trading goals and level.", color: "var(--neon-green)" },
-  { Icon: Activity, title: "Daily Trading Signals", text: "Receive professional daily forex signals with full analysis and entry/exit points.", color: "var(--neon-purple)" },
+  { Icon: Monitor, title: "Live Trading Sessions", text: "Trade alongside our experts in real-time live market sessions every week.", color: "var(--gold)" },
+  { Icon: UserCheck, title: "1-on-1 Mentorship", text: "Personalized coaching sessions tailored to your specific trading goals and level.", color: "var(--gold-light)" },
+  { Icon: Activity, title: "Daily Trading Signals", text: "Receive professional daily forex signals with full analysis and entry/exit points.", color: "var(--silver)" },
   { Icon: ShieldCheck, title: "Risk Management Training", text: "Learn institutional-grade risk management strategies to protect and grow your capital.", color: "var(--gold)" },
-  { Icon: CandlestickChart, title: "Technical Analysis", text: "Deep dive into price action, indicators, patterns, and advanced charting techniques.", color: "var(--neon-blue)" },
-  { Icon: Globe2, title: "Fundamental Analysis", text: "Understand economic data, central bank policies, and macro market drivers.", color: "var(--neon-green)" },
-  { Icon: Brain, title: "Trading Psychology", text: "Develop the elite mindset, discipline, and emotional control of a pro trader.", color: "var(--neon-purple)" },
+  { Icon: CandlestickChart, title: "Technical Analysis", text: "Deep dive into price action, indicators, patterns, and advanced charting techniques.", color: "var(--gold)" },
+  { Icon: Globe2, title: "Fundamental Analysis", text: "Understand economic data, central bank policies, and macro market drivers.", color: "var(--gold-light)" },
+  { Icon: Brain, title: "Trading Psychology", text: "Develop the elite mindset, discipline, and emotional control of a pro trader.", color: "var(--silver)" },
   { Icon: Users, title: "Private Community", text: "Join our exclusive members-only community of serious, like-minded traders worldwide.", color: "var(--gold)" },
-  { Icon: BookOpen, title: "Lifetime Mentorship", text: "Get permanent access to all course content, updates, and new materials added over time.", color: "var(--neon-blue)" },
+  { Icon: BookOpen, title: "Lifetime Mentorship", text: "Get permanent access to all course content, updates, and new materials added over time.", color: "var(--gold)" },
 ];
 
 function FacilitiesPage() {

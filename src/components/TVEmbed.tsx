@@ -61,7 +61,7 @@ export default function TVEmbed({ symbol, interval, className, children }: TVEmb
       allow_symbol_change: true,
       save_image: false,
       backgroundColor: "rgba(5, 13, 36, 1)",
-      gridColor: "rgba(0, 212, 255, 0.06)",
+      gridColor: "rgba(212,168,76, 0.06)",
       support_host: "https://www.tradingview.com",
     });
 

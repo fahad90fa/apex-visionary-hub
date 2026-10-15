@@ -99,7 +99,7 @@ function SocialPage() {
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <div className="absolute inset-0 animate-shimmer" style={{ background: `linear-gradient(90deg, transparent, ${f.color}33, transparent)`, backgroundSize: "200% 100%" }} />
                     <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 30% 30%, ${f.color}55, transparent 60%)` }} />
-                    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border bg-black/60 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur" style={{ borderColor: `${f.color}66`, color: f.color }}>
+                    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border bg-navy-deep/60 px-3 py-1 font-sub text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur" style={{ borderColor: `${f.color}66`, color: f.color }}>
                       <f.Icon size={12} /> {f.platform}
                     </span>
                   </div>
