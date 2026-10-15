@@ -9,7 +9,7 @@ export function PageHero({ badge, title, subtitle, children }: { badge?: string;
       <ParticleField density={60} />
       <div className="relative mx-auto max-w-5xl px-5 text-center lg:px-8">
         {badge && (
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.25em] text-gold shadow-[0_0_24px_rgba(212,168,76,0.25)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 font-sub text-[11px] font-bold uppercase tracking-[0.15em] text-gold shadow-[0_0_24px_rgba(212,168,76,0.25)]">
             {badge}
           </span>
         )}

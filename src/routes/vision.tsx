@@ -136,7 +136,7 @@ function VisionPage() {
                       <div className="relative shrink-0">
                         <div
                           className={`grid h-12 w-12 place-items-center rounded-full border-2 font-display text-[10px] font-black ${i === milestones.length - 1 ? "animate-pulse-glow" : ""}`}
-                          style={{ borderColor: m.color, background: "#000", color: m.color, boxShadow: `0 0 20px ${m.color}88` }}
+                          style={{ borderColor: m.color, background: "var(--navy-deep)", color: m.color, boxShadow: `0 0 20px ${m.color}88` }}
                         >
                           {m.year}
                         </div>

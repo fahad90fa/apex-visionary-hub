@@ -51,7 +51,7 @@ export function Navbar() {
               <li key={l.to}>
                 <Link
                   to={l.to}
-                  className={`group relative px-4 py-2 font-sub text-sm font-medium tracking-wide transition-colors ${
+                  className={`group relative px-3 py-2 font-sub text-sm font-medium tracking-wide transition-colors ${
                     active ? "text-gold" : "text-muted-foreground hover:text-white"
                   }`}
                 >
@@ -69,7 +69,7 @@ export function Navbar() {
 
         <Link
           to="/contact"
-          className="hidden lg:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-light px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.18em] text-navy shadow-[0_0_24px_rgba(212,168,76,0.55)] transition-transform hover:scale-105"
+          className="hidden lg:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-gradient-to-r from-gold to-gold-light px-5 py-2.5 font-sub text-xs font-bold uppercase tracking-[0.18em] text-navy shadow-[0_0_24px_rgba(212,168,76,0.55)] transition-transform hover:scale-105"
         >
           Join Now
         </Link>
